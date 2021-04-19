@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  nav {
+    display: flex;
+    background-color: slategray;
+    min-height: 100px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .logo h1 {
+    color: azure;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+  }
+  
+  .nav-links li {
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: azure;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .content {
+    position: relative;
+    width: 100%;
+  }
+  
