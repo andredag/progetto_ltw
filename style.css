@@ -40,7 +40,7 @@ nav {
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .nav-links {
@@ -58,7 +58,15 @@ nav {
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+#login_button:hover {
+  letter-spacing: 3px;
+}
+
+#register_button:hover {
+  letter-spacing: 3px;
 }
 
 /*home section*/
@@ -99,6 +107,65 @@ nav {
 
 .home .content .btn:hover {
   letter-spacing: 6px;
+}
+
+/*about section*/
+
+.about {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.about h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+#intro_hint {
+  font-size: 30px;
+}
+
+.about p {
+  color: #777;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 22px;
+  padding: 10px;
+}
+
+.riga_hint {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hint {
+  flex-basis: 31%;
+  background: #fff3f3;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding: 20px 12px;
+  transition: 0.5s;
+}
+
+.hint h3 {
+  text-align: center;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.hint:hover {
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* for smaller screen*/
+@media (max-width: 900px) {
+  .riga_hint {
+    flex-direction: column;
+  }
 }
 
 /*contact section*/
