@@ -6,6 +6,7 @@
 }
 
 /*nav bar section*/
+
 nav {
   /*display: flex;
   background-color: slategray;
@@ -16,15 +17,23 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0px 30px;
-  background-color: slategray;
+  padding: 0px 20px;
   box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
   z-index: 1;
   width: 100%;
   position: fixed;
   left: 0px;
   top: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+   
 }
+
+
+
+nav.scroll_animation  {  
+  background-color: white;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -34,13 +43,15 @@ nav {
   height: 100px;
   width: 100px;
 }
-
+.logo a{
+  text-decoration: none;
+}
 .logo h1 {
-  color: azure;
+  color: black;
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 35px;
 }
 
 .nav-links {
@@ -54,20 +65,33 @@ nav {
 }
 
 .nav-links a {
-  color: azure;
+  color:black;
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
 }
 
-#login_button:hover {
+.bottoni .b{
+  font-size: 1em;
+  color: #fff;
+  background: rgb(0, 255, 242);
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+}
+
+/*#login_button:hover {
   letter-spacing: 3px;
 }
 
 #register_button:hover {
   letter-spacing: 3px;
-}
+}*/
 
 /*home section*/
 
