@@ -8,18 +8,20 @@
     <link rel="stylesheet" type = "text/css" href="style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet"> 
 </head>
 <body>
+
+        <!--navbar -->
        <nav>
            <div class="logo"> 
                <img src="/images/logo.png" >
                 <h1>Easy-Uni</h1>
             </div>
            <ul class= "nav-links">
-               <li><a href="#">Home</a></li>
-               <li><a href="#">About</a></li>
-               <li><a href="#">Contact</a></li>
+               <li><a href="#home">Home</a></li>
+               <li><a href="#about">About</a></li>
+               <li><a href="#contact">Contact</a></li>
            </ul>
            <div class="bottoni">
                 <a href="./login/login.php"><button class="btn btn-primary">Login</button></a>
@@ -27,11 +29,45 @@
             </div>
        </nav>
 
-       <section class="content">
-            <div class="benvenuto">
-                <h2>benvenuto </h2>
-                <p>Gestire la propria carriera universitaria non è mai stato così facile!</p>
+    
+       <!--home section-->
+       <section class="home" id="home">
+           <div class="content">
+                <h2>Gestisci al meglio la tua carriera universitaria!</h2>
+                <a href="./registrazione/registrazione.php" class="btn">Register</a>
             </div>
-       </section>
+        </section>
+
+        <section class="about" id="about">
+
+        </section>
+
+        <!--about section-->
+        <section></section>
+
+        <!--contact section-->
+        <section class="contact" id="contact">
+            <div class="title_contact">
+                <h2 class= "titleText"><span>C</span>ontact Us </h2>
+                <p>Hai qualche suggerimento? <br>Contattaci</p>
+            </div>
+            <div class="contactForm">
+                <h3 class="titleText"><span>S</span>end message</h3>
+                <div class="inputBox">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="inputBox">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="inputBox">
+                    <textarea placeholder="Comments"> </textarea>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Send">
+                </div>
+            </div>
+        </section>
+        
+       
 </body>
 </html>

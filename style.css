@@ -1,54 +1,185 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-  }
-  
-  nav {
-    display: flex;
-    background-color: slategray;
-    min-height: 100px;
-    align-items: center;
-    justify-content: space-around;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    height: 100px;
-    width: 100px;
-  }
-  
-  .logo h1 {
-    color: azure;
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  .nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 30%;
-  }
-  
-  .nav-links li {
-    list-style: none;
-  }
-  
-  .nav-links a {
-    color: azure;
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .content {
-    position: relative;
-    width: 100%;
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: "font-family: 'Orelega One', cursive";
+  box-sizing: border-box;
+}
+
+/*nav bar section*/
+nav {
+  /*display: flex;
+  background-color: slategray;
+  min-height: 100px;
+  align-items: center;
+  justify-content: space-around;*/
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 30px;
+  background-color: slategray;
+  box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
+  z-index: 1;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 100px;
+  width: 100px;
+}
+
+.logo h1 {
+  color: azure;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: azure;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/*home section*/
+
+.home {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("./images/pexels-toni-cuenca-585752.jpg");
+  background-size: cover;
+}
+
+.home .content {
+  max-width: 40%;
+  text-align: center;
+}
+
+.home .content h2 {
+  font-size: 4em;
+  color: #fff;
+}
+
+.home .content .btn {
+  font-size: 1em;
+  color: #fff;
+  background: rgb(0, 255, 242);
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+}
+
+.home .content .btn:hover {
+  letter-spacing: 6px;
+}
+
+/*contact section*/
+
+.contact {
+  background: url("/images/pexels-jess-bailey-designs-1097930.jpg");
+  background-size: cover;
+}
+
+.contactForm {
+  position: relative;
+  left: 300px;
+  padding: 75px 50px;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin-top: 50px;
+}
+
+.title_contact {
+  position: relative;
+  left: 900px;
+  top: 300px;
+}
+
+.title_contact p {
+  font-size: 40px;
+}
+
+.titleText {
+  color: #111;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.titleText span {
+  color: #ff0157;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.contactForm h3 {
+  color: #111;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.contactForm .inputBox {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.contactForm .inputBox input,
+.contactForm .inputBox textarea {
+  width: 100%;
+  border: 1px solid #555;
+  padding: 10px;
+  color: #111;
+  outline: none;
+  font-size: 16px;
+  font-weight: 300;
+  resize: none;
+}
+
+.contactForm .inputBox input[type="submit"] {
+  font-size: 1em;
+  color: #fff;
+  background: #ff0157;
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+  max-width: 100px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.contactForm textarea {
+  height: auto;
+}
