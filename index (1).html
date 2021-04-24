@@ -9,53 +9,60 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet"> 
-    
+    <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/toogle_menu.js"></script>
+
     <script type="text/javascript">
         window.addEventListener('scroll', function(){
             var nav_bar = document.getElementById('nav_bar');
             nav_bar.classList.toggle("scroll_animation", window.scrollY > 0);
         })
     </script>
+    
 </head>
-<body>
+<body onload="gestore_Eventi();">
 
+    <!--header section-->
+    <section class="home" id="home">
+        
         <!--navbar -->
-       
        <nav id="nav_bar">
-           <div class="logo"> 
+          
+            <div class="logo"> 
                <img src="/images/logo.png" >
-                <a href="#home">
-                    <h1>Easy-Uni</h1>
-                </a>
+                <h1>Easy-Uni</h1>
             </div>
-           <ul class= "nav-links">
-               <li><a href="#home">Home</a></li>
-               <li><a href="#about">About</a></li>
-               <li><a href="#contact">Contact</a></li>
-           </ul>
+           
+            
+            <div class="nav-links" id="nav-links">
+                <i class="far fa-times-circle" id="exit-icon"></i> <!--exit-icon for smaller screens-->
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+           
            <div class="bottoni">
                 <a href="./login/login.php"><button class="btn btn-primary" id="login_button">Login</button></a>
                 <a href="./registrazione/registrazione.php"><button class="btn btn-primary" id="register_button">Register</button></a> 
             </div>
-       </nav>
-       
-    
+            
+            <i class="fas fa-bars" id="bar-icon"></i> <!--menu-icon for smaller screens-->
 
-    
-       <!--home section-->
-       <section class="home" id="home">
-           <div class="content">
-                <h2>Gestisci al meglio la tua carriera universitaria!</h2>
-                <a href="./registrazione/registrazione.php" class="btn">Register</a>
+        </nav>
+
+       <!--home content section-->
+           <div class="text-box">
+                <h1>Gestisci al meglio la tua carriera universitaria!</h1>
+                <a href="./registrazione/registrazione.php" class="cool-btn">Register</a>
             </div>
-        </section>
+       
+     </section>
 
-        <section class="about" id="about">
-
-        </section>
-
-        <!--about section-->
-        <section class="about">
+        
+    <!--about section-->
+    <section class="about" id="about">
             <h1>Cosa si può fare</h1>
             <p id="intro_hint">Tre semplici passi per ogni esame da preparare</p>
             
@@ -82,15 +89,30 @@
                 </div>
             </div>
         
-        </section>
+    </section>
 
-        <!--contact section-->
-        <section class="contact" id="contact">
-            <div class="title_contact">
+    
+    <!--contact section-->
+
+    <div class="contact" id="contact">
+        <h3>Hai qualche suggerimento? <span>C</span>ontattaci!</h3>
+        
+        <form class="comment-form">
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="Email">
+            <textarea rows="5" placeholder="Tuo commento"></textarea>
+            <button type="submit" class="cool-btn">Invia commento</button>
+        </form>
+       
+    </div>
+
+
+    <!--<section class="contact" id="contact">
+        <div class="title_contact">
                 <h2 class= "titleText"><span>C</span>ontact Us </h2>
                 <p>Hai qualche suggerimento? <br>Contattaci</p>
-            </div>
-            <div class="contactForm">
+        </div>
+        <div class="contactForm">
                 <h3 class="titleText"><span>S</span>end message</h3>
                 <div class="inputBox">
                     <input type="text" placeholder="Name">
@@ -104,9 +126,9 @@
                 <div class="inputBox">
                     <input type="submit" value="Send">
                 </div>
-            </div>
-        </section>
-        
+        </div>
+    </section>
+-->
        
 </body>
 </html>
