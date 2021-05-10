@@ -20,7 +20,7 @@
     </script>
     
 </head>
-<body onload="gestore_Eventi();">
+<body>
 
     <!--header section-->
     <section class="home" id="home">
@@ -35,7 +35,7 @@
            
             
             <div class="nav-links" id="nav-links">
-                <i class="far fa-times-circle" id="exit-icon"></i> <!--exit-icon for smaller screens-->
+                <i class="far fa-times-circle" id="exit-icon" onclick="hideMenu()"></i> <!--exit-icon for smaller screens-->
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -44,18 +44,18 @@
             </div>
            
            <div class="bottoni">
-                <a href="./login/login.php"><button class="btn btn-primary" id="login_button">Login</button></a>
-                <a href="./registrazione/registrazione.php"><button class="btn btn-primary" id="register_button">Register</button></a> 
+                <a href="./login_registrazione/index.html?register=false"><button class="cool-btn">Login</button></a>
+                <a href="./login_registrazione/index.html?register=true"><button class="cool-btn">Register</button></a> 
             </div>
             
-            <i class="fas fa-bars" id="bar-icon"></i> <!--menu-icon for smaller screens-->
+            <i class="fas fa-bars" id="bar-icon" onclick="showMenu()"></i> <!--menu-icon for smaller screens-->
 
         </nav>
 
        <!--home content section-->
            <div class="text-box">
                 <h1>Gestisci al meglio la tua carriera universitaria!</h1>
-                <a href="./registrazione/registrazione.php" class="cool-btn">Register</a>
+                <a href="./login_registrazione/index.html?register=true" class="cool-btn">Register</a>
             </div>
        
      </section>
@@ -63,6 +63,12 @@
         
     <!--about section-->
     <section class="about" id="about">
+
+            <br>
+            <br>
+            <br>
+            <br>
+            
             <h1>Cosa si può fare</h1>
             <p id="intro_hint">Tre semplici passi per ogni esame da preparare</p>
             
@@ -95,7 +101,7 @@
     <!--contact section-->
 
     <div class="contact" id="contact">
-        <h3>Hai qualche suggerimento? <span>C</span>ontattaci!</h3>
+        <h2>Hai qualche suggerimento? <span>C</span>ontattaci!</h2>
         
         <form class="comment-form">
             <input type="text" placeholder="Nome">
@@ -106,29 +112,6 @@
        
     </div>
 
-
-    <!--<section class="contact" id="contact">
-        <div class="title_contact">
-                <h2 class= "titleText"><span>C</span>ontact Us </h2>
-                <p>Hai qualche suggerimento? <br>Contattaci</p>
-        </div>
-        <div class="contactForm">
-                <h3 class="titleText"><span>S</span>end message</h3>
-                <div class="inputBox">
-                    <input type="text" placeholder="Name">
-                </div>
-                <div class="inputBox">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="inputBox">
-                    <textarea placeholder="Comments"> </textarea>
-                </div>
-                <div class="inputBox">
-                    <input type="submit" value="Send">
-                </div>
-        </div>
-    </section>
--->
        
 </body>
 </html>

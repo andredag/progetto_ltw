@@ -1,15 +1,13 @@
 
-function gestore_Eventi(){
 
-var navLinks = document.getElementById("nav-links");
-
-document.getElementById("exit-icon").addEventListener('click',function hideMenu(){
+function hideMenu(){
+    var navLinks = document.getElementById("nav-links");
     navLinks.style.right = "-200px";
-});
+}
 
-document.getElementById("menu-icon").addEventListener('click', function showMenu(){
+function showMenu(){
+    var navLinks = document.getElementById("nav-links");
     navLinks.style.right = "0";
-});
 }
 
     
