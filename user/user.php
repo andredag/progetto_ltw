@@ -19,94 +19,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/toogle_menu.js"></script>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>User page</title>
+
 
     <!-- load JQuery-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
     <script src="./user.js"></script>
     
-
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript">
-    
-    // Load the Visualization API and the linechart package.
-    google.charts.load('current', {'packages':['corechart']});
-      
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-    google.charts.setOnLoadCallback(drawChart2);
-    google.charts.setOnLoadCallback(drawChart3);
-      
-    function drawChart() {
-      var jsonData = $.ajax({
-          url: "getData.php",
-          dataType: "json",
-          async: false
-          }).responseText;
-          
-      // Create our data table out of JSON data loaded from server.
-      var data = new google.visualization.DataTable(jsonData);
-
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.LineChart(document.getElementById('chart-box'));
-      
-      var options={
-        title: 'Voti',
-        legend: { position: 'bottom' }
-        
-      };
-      
-      chart.draw(data, options);
-    }
-
-    function drawChart2() {
-      var jsonData = $.ajax({
-          url: "getData2.php",
-          dataType: "json",
-          async: false
-          }).responseText;
-          
-      // Create our data table out of JSON data loaded from server.
-      var data = new google.visualization.DataTable(jsonData);
-
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.PieChart(document.getElementById('cfu-box'));
-      
-      var options={
-        title: 'Cfu',
-        is3D:true
-      };
-
-      chart.draw(data, options);
-    }
-
-    function drawChart3() {
-      var jsonData = $.ajax({
-          url: "getData3.php",
-          dataType: "json",
-          async: false
-          }).responseText;
-          
-      // Create our data table out of JSON data loaded from server.
-      var data = new google.visualization.DataTable(jsonData);
-
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.LineChart(document.getElementById('num-box'));
-      
-      var options={
-        title: 'Media',
-        legend: { position: 'bottom' }
-      };
-
-      chart.draw(data, options);
-    }
-
-   
-
-    </script>
+    <script type="text/javascript" src="./chart.js"></script>
     
 
 </head>
@@ -231,10 +155,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                         </td>
                                         <td >$voto</td>
                                         <td>$cfu</td>
-                                        <td><button class='btn-edit'>Edit</button></td>
-                                        <td><button class='btn-rimuovi'>Rimuovi</button></td>
+                                        <td><i class='fas fa-edit'></i></td>
+                                        <td><i class='fas fa-trash-alt'></i></td>
                                     </tr>
-                                    ";
+                                    "; 
                                     }
                                     else{
                                         echo "
@@ -246,8 +170,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                         </td>
                                         <td >$voto</td>
                                         <td>$cfu</td>
-                                        <td ><button class='btn-edit'>Edit</button></td>
-                                        <td><button class='btn-rimuovi'>Rimuovi</button></td>
+                                        <td ><i class='fas fa-edit'></i></td>
+                                        <td><i class='fas fa-trash-alt'></i></td>
                                     </tr>
                                     ";
                                     }

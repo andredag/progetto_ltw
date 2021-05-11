@@ -2,20 +2,11 @@ $(document).ready(function(){
             
     /* edit button*/ 
 
-    function modifica_esame(){
-        var testo = $(this).text();
-        if (testo == "Edit"){
-            $(this).parent().parent().height("200px");
-            $(this).text("Chiudi");
-        }
-
-        else if (testo == "Chiudi"){
-            $(this).parent().parent().height("30px");
-            $(this).text("Edit");
-        }
+    function apri_modal_esame(){
+        alert("Qui va messo il codice per aprire il modal con le info per l'esame");
     }
 
-    $(".btn-edit").click(modifica_esame);
+    $(".fa-edit").click(apri_modal_esame);
     
     
     /* rimuovi esame button*/ 
@@ -44,8 +35,10 @@ $(document).ready(function(){
                 alert("sei sicuro coglione?");
             }
         });
+
+        $.getScript("./chart.js");
     }
-    $(".btn-rimuovi").click(rimuovi_esame);
+    $(".fa-trash-alt").click(rimuovi_esame);
 
     /*aggiungi esame button */
     $("#btn-esame").click(function apri_form_esame(){
@@ -111,8 +104,8 @@ $(document).ready(function(){
                                 '</td>'+
                                 '<td >'+voto+'</td>'+
                                 '<td >'+cfu+'</td>'+
-                                '<td class="btn-e"><button class="btn-edit">Edit</button></td>'+
-                                '<td class="btn-r"><button class="btn-rimuovi">Rimuovi</button></td>'+
+                                '<td class="btn-e"><i class="fas fa-edit"></i></td>'+
+                                '<td class="btn-r"><i class="fas fa-trash-alt"></i></td>'+
                                 '</tr>');
                 }
                 else {
@@ -124,11 +117,11 @@ $(document).ready(function(){
                                 '</td>'+
                                 '<td >'+voto+'</td>'+
                                 '<td >'+cfu+'</td>'+
-                                '<td class="btn-e"><button class="btn-edit">Edit</button></td>'+
-                                '<td class="btn-r"><button class="btn-rimuovi">Rimuovi</button></td>'+
+                                '<td class="btn-e"><i class="fas fa-edit"></i></td>'+
+                                '<td class="btn-r"><i class="fas fa-trash-alt"></i></td>'+
                                 '</tr>');
                 }
-                $("#table_body").children(":first").children(".btn-e").children().click(modifica_esame);
+                $("#table_body").children(":first").children(".btn-e").children().click(apri_modal_esame);
                 $("#table_body").children(":first").children(".btn-r").children().click(rimuovi_esame);
             },
             error: function(msg){
@@ -140,7 +133,7 @@ $(document).ready(function(){
         $(this).siblings("input[target=voto]").val('');
         $(this).siblings("input[target=cfu]").val('');
 
-        
+        $.getScript("./chart.js");
     });
 
     
