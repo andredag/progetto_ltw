@@ -6,7 +6,7 @@
 .home {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(#eb7272, #9198e5);
+  background-color: aquamarine;
   position: relative;
 }
 
@@ -19,6 +19,7 @@ nav {
   width: 100%;
   background-color: #fff;
   box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
+  z-index: 20;
 }
 
 nav.scroll_animation {
@@ -143,6 +144,42 @@ nav.scroll_animation {
   }
 }
 
+/*statistiche
+*/
+.stats {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.riga_hint {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hint {
+  flex-basis: 31%;
+  background: #fff3f3;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding: 20px 12px;
+  transition: 0.5s;
+}
+
+.hint:hover {
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* for smaller screen*/
+@media (max-width: 900px) {
+  .riga_hint {
+    flex-direction: column;
+  }
+}
+
 /* esami */
 
 .esami {
@@ -180,16 +217,22 @@ nav.scroll_animation {
   font-weight: bold;
 }
 
+.fa-times-circle {
+  color: red;
+}
+
 .info-body {
-  
+  display: flex;
+  flex-direction: column;
   padding: 10px 15px;
   align-items: center;
-  margin-left: 60px;
+  
+  
 }
 
 #ok-btn {
   margin-top: 10px;
-  margin-left: 40px;
+  
   width: 100px;
   height: 30px;
   cursor: pointer;
@@ -197,4 +240,7 @@ nav.scroll_animation {
   border: 2px solid black;
 }
 
-
+.alert{
+  display:none;
+  text-align:center;
+}

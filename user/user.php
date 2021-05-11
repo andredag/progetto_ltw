@@ -37,10 +37,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart2);
+    google.charts.setOnLoadCallback(drawChart3);
       
     function drawChart() {
       var jsonData = $.ajax({
-          url: "./getData.php",
+          url: "getData.php",
           dataType: "json",
           async: false
           }).responseText;
@@ -52,18 +54,60 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       var chart = new google.visualization.LineChart(document.getElementById('chart-box'));
       
       var options={
-          vAxis:{
-              title: 'Voto'
-          }
-          hAxis:{
-              title: 'Esame'
-          }
-      }
+        title: 'Voti',
+        legend: { position: 'bottom' }
+        
+      };
       
       chart.draw(data, options);
     }
 
+    function drawChart2() {
+      var jsonData = $.ajax({
+          url: "getData2.php",
+          dataType: "json",
+          async: false
+          }).responseText;
+          
+      // Create our data table out of JSON data loaded from server.
+      var data = new google.visualization.DataTable(jsonData);
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('cfu-box'));
+      
+      var options={
+        title: 'Cfu',
+        is3D:true
+      };
+
+      chart.draw(data, options);
+    }
+
+    function drawChart3() {
+      var jsonData = $.ajax({
+          url: "getData3.php",
+          dataType: "json",
+          async: false
+          }).responseText;
+          
+      // Create our data table out of JSON data loaded from server.
+      var data = new google.visualization.DataTable(jsonData);
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.LineChart(document.getElementById('num-box'));
+      
+      var options={
+        title: 'Media',
+        legend: { position: 'bottom' }
+      };
+
+      chart.draw(data, options);
+    }
+
+   
+
     </script>
+    
 
 </head>
 <body>
@@ -90,10 +134,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <!-- stats -->
     <div class="stats" id= "stats">
-        <div id="cfu-box"></div>
-        <div id="num-box"></div>
-        <div id="chart-box"></div>
+       
+        <div class="riga_hint">
+
+                <div class="hint">
+                    <div id="chart-box"></div>
+                </div>
+
+                <div class="hint">
+                    <div id="num-box"></div>
+                </div>
+
+                <div class="hint">
+                    <div id="cfu-box"></div>
+                </div>
+        </div>
+    
     </div>
+
 
 </section>
 
@@ -108,11 +166,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <h1>Info esame</h1>
                                 <button id="btn-close">&times;</button>
                             </div>
-                            <div class="alert alert-warning" role="alert" id="alert" style="display:none;">
+                            <div class="alert alert-warning" role="alert" id="alert" >
                             </div>
                             <div class="info-body">
                                 <!--<form action="./invia_dati_esame.php" id="get-info" method="POST">-->
                                     <input type="text" placeholder="Nome" target="nome" required>
+                                    
                                     <input type="text" placeholder="Cfu" target="cfu" required>
                                    
                                     <div class="form-check">
@@ -123,7 +182,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     </div>
                                     
                                     <input type="text" placeholder="Voto" target="voto" id="voto_info" hidden=true>
-                                    </br>
+                                    
                                     <button id="ok-btn" type="submit" value="ok" >Ok</button>
                                 <!--</form>-->
                                 <script>
@@ -137,6 +196,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             </div>
                         </div>
                         <th scope="col">Esame</th>
+                        <th scope="col">Sostenuto</th>
                         <th scope="col">Voto</th>
                         <th scope="col">Cfu</th>
                         <th scope="col"></th>
@@ -147,7 +207,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <?php
                         //  query the database to get exams info.
                         $utente = $_SESSION["id"];
-                        $query = "SELECT esame.nome_esame, esame.voto, esame.cfu
+                        $query = "SELECT esame.nome_esame, esame.voto, esame.cfu , esame.sostenuto
                         FROM esame
                         where esame.id_utente = $1 ";
                         //order by data_sostenuto
@@ -160,16 +220,37 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     $nome_esame= $line["nome_esame"];
                                     $voto=$line["voto"];
                                     $cfu=$line["cfu"];
+                                    $sostenuto=$line["sostenuto"];
+                                    if($sostenuto=="t"){
                                     echo "
                                     <tr class='riga_tabella'>
-                                        <th scope='row'>1</th>
+                                        <td></td>
+                                        <td class='nome_esame'>$nome_esame </td>
+                                        <td>
+                                            <i class='fas fa-check-circle'> </i>
+                                        </td>
+                                        <td >$voto</td>
+                                        <td>$cfu</td>
+                                        <td><button class='btn-edit'>Edit</button></td>
+                                        <td><button class='btn-rimuovi'>Rimuovi</button></td>
+                                    </tr>
+                                    ";
+                                    }
+                                    else{
+                                        echo "
+                                    <tr class='riga_tabella'>
+                                        <td></td>
                                         <td class='nome_esame'>$nome_esame</td>
+                                        <td>
+                                            <i class='far fa-times-circle'></i>
+                                        </td>
                                         <td >$voto</td>
                                         <td>$cfu</td>
                                         <td ><button class='btn-edit'>Edit</button></td>
                                         <td><button class='btn-rimuovi'>Rimuovi</button></td>
                                     </tr>
                                     ";
+                                    }
                                 }
                             } else{
                                 echo "Oops! Something went wrong. Please try again later.";

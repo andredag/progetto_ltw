@@ -8,7 +8,7 @@
 
     // Prepare a select statement
     //    query the database in order to calculate aritmetic and ponderated mean.
-    $query = "SELECT nome_esame, voto
+    $query = "SELECT nome_esame, cfu
     FROM esame
     where id_utente= $1 and sostenuto=true";
     //order by data_sostenuto
@@ -21,7 +21,7 @@
         $table = array();
         $table['cols'] = array(
               array ('label'=> 'nome', 'type'=> 'string'),
-              array('label'=> 'voto', 'type'=> 'number')
+              array('label'=> 'cfu', 'type'=> 'number')
         );
     
         $rows = array();
@@ -29,7 +29,7 @@
           
           $temp = array();
           $temp[] = array('v'=> $line['nome_esame']);
-          $temp[] = array('v'=> (int) $line['voto']);
+          $temp[] = array('v'=> (int) $line['cfu']);
     
           $rows[]= array ('c'=> $temp);
         }

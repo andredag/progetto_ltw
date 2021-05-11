@@ -90,6 +90,7 @@ $(document).ready(function(){
 
         
         $(".info-esame").hide();
+        $("#alert").fadeOut();
         $.ajax({
             type: "POST",
             url: "./invia_dati_esame.php",
@@ -101,16 +102,34 @@ $(document).ready(function(){
             dataType: "html" ,
             success: function(msg){
                 alert(msg);
-                $("#table_body").prepend('<tr class="riga_tabella"> <th scope="row">1</th>'+
+                if(sostenuto==true){
+                $("#table_body").prepend('<tr class="riga_tabella"> '
+                                +'<td></td>'+
                                 '<td class="nome_esame">'+nome_esame+'</td>'+
+                                '<td>'+
+                                    '<i class="fas fa-check-circle"> </i>'+
+                                '</td>'+
                                 '<td >'+voto+'</td>'+
                                 '<td >'+cfu+'</td>'+
                                 '<td class="btn-e"><button class="btn-edit">Edit</button></td>'+
                                 '<td class="btn-r"><button class="btn-rimuovi">Rimuovi</button></td>'+
                                 '</tr>');
+                }
+                else {
+                    $("#table_body").prepend('<tr class="riga_tabella"> '
+                                +'<td></td>'+
+                                '<td class="nome_esame">'+nome_esame+'</td>'+
+                                '<td>'+
+                                '<i class="far fa-times-circle"></i>'+
+                                '</td>'+
+                                '<td >'+voto+'</td>'+
+                                '<td >'+cfu+'</td>'+
+                                '<td class="btn-e"><button class="btn-edit">Edit</button></td>'+
+                                '<td class="btn-r"><button class="btn-rimuovi">Rimuovi</button></td>'+
+                                '</tr>');
+                }
                 $("#table_body").children(":first").children(".btn-e").children().click(modifica_esame);
                 $("#table_body").children(":first").children(".btn-r").children().click(rimuovi_esame);
-                
             },
             error: function(msg){
                 alert("errore");
