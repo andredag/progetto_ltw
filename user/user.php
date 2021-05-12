@@ -59,6 +59,30 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- stats -->
     <div class="stats" id= "stats">
        
+        <div class="container">
+            <div class="row">
+                <div class="col col-title"><h3>Media Aritmetica</h3></div>
+                <div class="col col-value"><h3>23</h3></div>
+                <div class="col col-chart"><div id="chart-box"></div></div>
+            </div>
+            <div class="row">
+                <div class="col col-title"><h3>Media Pesata</h3></div>
+                <div class="col col-value"><h3>23</h3></div>
+                <div class="col col-chart"><div id="chart-box"></div></div>
+            </div>
+            <div class="row">
+                <div class="col col-title"><h3>Cfu</h3></div>
+                <div class="col col-value">23/180</div>
+                <div class="col col-chart"><div id="cfu-box"></div></div>
+            </div>
+            <div class="row">
+                <div class="col col-title"><h3>Esami</h3></div>
+                <div class="col col-value">2/21</div>
+                <div class="col col-chart"><div id="num-box"></div></div>
+            </div>
+        </div>
+
+        <!--
         <div class="riga_hint">
 
                 <div class="hint">
@@ -72,7 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <div class="hint">
                     <div id="cfu-box"></div>
                 </div>
-        </div>
+        </div>-->
     
     </div>
 

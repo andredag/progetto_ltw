@@ -28,6 +28,7 @@ nav {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
+  z-index: 20;
 }
 
 nav.scroll_animation {
