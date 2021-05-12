@@ -22,7 +22,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>User page</title>
 
-
     <!-- load JQuery-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
     <script src="./user.js"></script>
@@ -31,8 +30,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="./chart.js"></script>
-    
-
 </head>
 <body>
 
@@ -157,7 +154,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         $utente = $_SESSION["id"];
                         $query = "SELECT esame.nome_esame, esame.voto, esame.cfu , esame.sostenuto
                         FROM esame
-                        where esame.id_utente = $1 ";
+                        where esame.id_utente = $1 
+                        ORDER BY esame.created_at DESC";
                         //order by data_sostenuto
                         if($stmt = pg_prepare($link,"ps", $query)){
         
