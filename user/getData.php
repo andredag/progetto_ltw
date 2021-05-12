@@ -10,7 +10,8 @@
     //    query the database in order to calculate aritmetic and ponderated mean.
     $query = "SELECT nome_esame, voto
     FROM esame
-    where id_utente= $1 and sostenuto=true";
+    where id_utente= $1 and sostenuto=true
+    ORDER BY esame.created_at";
     //order by data_sostenuto
 
     if($stmt = pg_prepare($link,"ps", $query)){

@@ -45,3 +45,5 @@ CREATE TABLE nota (
     Constraint vincolo_fk_nota FOREIGN KEY (id_utente,nome_esame) 
 	REFERENCES esame(id_utente,nome_esame)
 );
+
+ALTER TABLE esame ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
