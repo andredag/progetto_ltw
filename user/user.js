@@ -35,13 +35,14 @@ $(document).ready(function(){
                 alert("sei sicuro coglione?");
             }
         });
-
+        //aggiorna i grafici e i numeri vicino.
         $.getScript("./chart.js");
+        scrivi_numeri();
     }
     $(".fa-trash-alt").click(rimuovi_esame);
 
     /*aggiungi esame button */
-    $("#btn-esame").click(function apri_form_esame(){
+    $("#aggiungi-btn").click(function apri_form_esame(){
         $(".info-esame").show();
     });
 
@@ -57,6 +58,7 @@ $(document).ready(function(){
         var nome_esame = $(this).siblings("input[target=nome]").val();
         var voto = $(this).siblings("input[target=voto]").val();
         var cfu = $(this).siblings("input[target=cfu]").val();
+        var data_sostenuto = $(this).siblings("input[target=data_sostenuto]").val(); 
         var sostenuto = $("#flexCheckDefault").prop("checked");
         if(nome_esame=='') {
             $("#alert").append("Nome non corretto"+'</br>');
@@ -76,6 +78,11 @@ $(document).ready(function(){
                 errore=true;
             }
         }
+        if(sostenuto==true && data_sostenuto==""){
+            $("#alert").append("Inserisci la data in cui hai sostenuto l'esame"+'</br>');
+            errore=true;
+        }
+
         if(errore==true) {
             $("#alert").fadeIn("slow");
             return false;
@@ -91,6 +98,7 @@ $(document).ready(function(){
                   "&voto="+voto+
                   "&cfu="+cfu+
                   "&sostenuto="+sostenuto+
+                  "&data_sostenuto="+data_sostenuto+
                   "&add=true",
             dataType: "html" ,
             success: function(msg){
@@ -132,12 +140,68 @@ $(document).ready(function(){
         $(this).siblings("input[target=nome]").val('');
         $(this).siblings("input[target=voto]").val('');
         $(this).siblings("input[target=cfu]").val('');
+        $(this).siblings("input[target=data_sostenuto]").val('');
 
+        //aggiorna i grafici e i numeri vicino.
         $.getScript("./chart.js");
+        scrivi_numeri();
+    });
+
+       
+    function scrivi_numeri(){  
+    $.ajax({
+        url: "./getMediaA.php",
+        data: "solo_media",
+        success: function(msg){
+            $("#title-media-a").text(msg);
+        },
+        error: function(msg){
+            alert("errore");
+        },
+    
+    });
+
+    $.ajax({
+        url: "./getMediaP.php",
+        data: "solo_media",
+        success: function(msg){
+            $("#title-media-p").text(msg);
+        },
+        error: function(msg){
+            alert("errore");
+        },
+    
+    });
+
+
+    $.ajax({
+        url: "./getVoti.php",
+        data: "solo_num_esami",
+        success: function(msg){
+            $("#title-esami").text(msg);
+        },
+        error: function(msg){
+            alert("errore");
+        },
+    
     });
 
     
-
+    $.ajax({
+        url: "./getCfu.php",
+        data: "solo_num_cfu",
+        success: function(msg){
+            $("#title-cfu").text(msg);
+        },
+        error: function(msg){
+            alert("errore");
+        },
     
+    });
+    };
+
+    scrivi_numeri();
+   
+
         
 });

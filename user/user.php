@@ -34,6 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
 
 <section class="home" id="home">
+    
     <!--navbar -->
     <nav id="nav_bar">
           <div class="logo"> 
@@ -58,43 +59,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
        
         <div class="container">
             <div class="row">
-                <div class="col col-title"><h3>Media Aritmetica</h3></div>
-                <div class="col col-value"><h3>23</h3></div>
-                <div class="col col-chart"><div id="chart-box"></div></div>
+                <div class="col "><h3>Media Aritmetica</h3></div>
+                <div class="col "><h3 id="title-media-a"></h3></div>
+                <div class="col"><div class = "chart-box" id="media-aritmetica-box"></div></div>
             </div>
             <div class="row">
-                <div class="col col-title"><h3>Media Pesata</h3></div>
-                <div class="col col-value"><h3>23</h3></div>
-                <div class="col col-chart"><div id="chart-box"></div></div>
+                <div class="col "><h3>Media Pesata</h3></div>
+                <div class="col "><h3 id="title-media-p"></h3></div>
+                <div class="col "><div class = "chart-box" id="media-pesata-box"></div></div>
             </div>
             <div class="row">
-                <div class="col col-title"><h3>Cfu</h3></div>
-                <div class="col col-value">23/180</div>
-                <div class="col col-chart"><div id="cfu-box"></div></div>
+                <div class="col "><h3>Cfu</h3></div>
+                <div class="col "><h3 id="title-cfu"></h3></div>
+                <div class="col"><div class = "chart-box" id="cfu-box"></div></div>
             </div>
             <div class="row">
-                <div class="col col-title"><h3>Esami</h3></div>
-                <div class="col col-value">2/21</div>
-                <div class="col col-chart"><div id="num-box"></div></div>
+                <div class="col "><h3>Esami</h3></div>
+                <div class="col "><h3 id="title-esami"></h3></div>
+                <div class="col"><div class = "chart-box" id="voti-box"></div></div>
             </div>
         </div>
-
-        <!--
-        <div class="riga_hint">
-
-                <div class="hint">
-                    <div id="chart-box"></div>
-                </div>
-
-                <div class="hint">
-                    <div id="num-box"></div>
-                </div>
-
-                <div class="hint">
-                    <div id="cfu-box"></div>
-                </div>
-        </div>-->
-    
     </div>
 
 
@@ -105,7 +89,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col"><button id="btn-esame">Aggiungi Esame</button></th>
+                       
                         <div class="info-esame" id="info-esame">
                             <div class="info-header">
                                 <h1>Info esame</h1>
@@ -127,19 +111,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     </div>
                                     
                                     <input type="text" placeholder="Voto" target="voto" id="voto_info" hidden=true>
-                                    
+                                    <br>
+                                    <input type="date" target="data_sostenuto" id="data_sostenuto" hidden=true>
                                     <button id="ok-btn" type="submit" value="ok" >Ok</button>
                                 <!--</form>-->
                                 <script>
                                     $("#flexCheckDefault").change(function(){
                                         
                                         var value = $(this).prop("checked");
-                                        if(value==true) $("#voto_info").attr("hidden",false);
-                                        else $("#voto_info").attr("hidden",true);
+                                        if(value==true){
+                                             $("#voto_info").attr("hidden",false);
+                                             $("#data_sostenuto").attr("hidden",false);
+                                        }
+                                        else {
+                                            $("#voto_info").attr("hidden",true);
+                                            $("#data_sostenuto").attr("hidden",true);
+                                        }
+
                                     })
                                 </script>
                             </div>
                         </div>
+                        <th scope="col" id="aggiungi_box">
+                            <i id="aggiungi-btn" class="fas fa-plus-square"></i>
+                            <br>
+                            <h4>Aggiungi esame</h4>
+                        </th>
                         <th scope="col">Esame</th>
                         <th scope="col">Sostenuto</th>
                         <th scope="col">Voto</th>
@@ -156,7 +153,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         FROM esame
                         where esame.id_utente = $1 
                         ORDER BY esame.created_at DESC";
-                        //order by data_sostenuto
+                        
                         if($stmt = pg_prepare($link,"ps", $query)){
         
                             // Attempt to execute the prepared statement

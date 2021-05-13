@@ -4,7 +4,7 @@
 }
 
 .home {
-  min-height: 110vh;
+  min-height: 120vh;
   width: 100%;
   background-color: aquamarine;
   position: relative;
@@ -89,7 +89,7 @@ nav.scroll_animation {
   display: inline-block;
   text-decoration: none;
   color: black;
-  border: 1px solid #fff;
+  border: 1px solid black;
   padding: 12px 34px;
   margin-top: 20px;
   font-size: 2em;
@@ -154,9 +154,31 @@ nav.scroll_animation {
 .stats {
   position: absolute;
   top: 20%;
+  left: 10%;
+  right: 10%;
+}
+
+.container .row {
+  border: 3px solid black;
   text-align: center;
 }
 
+.col h3 {
+  position: relative;
+  top: 50%;
+}
+.chart-box {
+  transition: transform 0.2s;
+  position: relative;
+  top: 0%;
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+}
+
+.chart-box:hover {
+  transform: scale(1.5);
+}
 /*
 .riga_hint {
   margin-top: 5%;
@@ -245,4 +267,16 @@ nav.scroll_animation {
 .alert {
   display: none;
   text-align: center;
+}
+
+.fa-plus-square {
+  font-size: 5em;
+}
+
+#aggiungi_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
 }
