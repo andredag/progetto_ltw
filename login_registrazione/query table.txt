@@ -1,0 +1,49 @@
+CREATE TABLE users (
+    id SERIAL NOT NULL PRIMARY KEY ,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE esame (
+    nome_esame VARCHAR(50) NOT NULL ,
+    id_utente INTEGER NOT NULL ,
+    cfu INTEGER ,
+	pag_corso VARCHAR(1000) ,
+	pag_web_prof VARCHAR(1000) ,
+	sostenuto BOOLEAN ,
+	voto INTEGER check(voto<=31 and voto>=0),
+	Constraint vincolo_pk_esame PRIMARY KEY (nome_esame,id_utente),
+    Constraint vincolo_fk_esame FOREIGN KEY (id_utente) REFERENCES users(id)
+);
+
+CREATE TABLE link (
+    id_link SERIAL NOT NULL PRIMARY KEY ,
+    descrizione_link VARCHAR(1000) ,
+	url VARCHAR(1000) ,
+	nome_esame VARCHAR(50) NOT NULL ,
+	id_utente INTEGER NOT NULL ,
+    Constraint vincolo_fk_link FOREIGN KEY (id_utente,nome_esame) 
+	REFERENCES esame(id_utente,nome_esame)
+);
+
+CREATE TABLE argomento (
+    id_argomento SERIAL NOT NULL PRIMARY KEY ,
+    nome_argomento VARCHAR(100) ,
+	pallino VARCHAR(20) ,
+	nome_esame VARCHAR(50) NOT NULL ,
+	id_utente INTEGER NOT NULL ,
+    Constraint vincolo_fk_argomento FOREIGN KEY (id_utente,nome_esame) 
+	REFERENCES esame(id_utente,nome_esame)
+);
+
+CREATE TABLE nota (
+    descrizione VARCHAR(2000) PRIMARY KEY ,
+	nome_esame VARCHAR(50) NOT NULL ,
+	id_utente INTEGER NOT NULL ,
+    Constraint vincolo_fk_nota FOREIGN KEY (id_utente,nome_esame) 
+	REFERENCES esame(id_utente,nome_esame)
+);
+
+ALTER TABLE esame ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

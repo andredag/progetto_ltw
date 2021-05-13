@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Login e registrazione</title>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="form-box">
+
+
+            <div class="button-box">
+                <div id="btn-color"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+
+
+
+            <div class="social-icons">
+                <i class="fab fa-google"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+
+
+            <form class="form" action="./login.php" method="POST" id="login-form">
+
+                <input type="text" id="log_username" class="input-field" placeholder="Username" name="username" required>
+
+                <input type="password" id="log_password" class="input-field" placeholder="Password" name="password" required>
+
+                <input type="checkbox" name="remember" class="checkbox"> <span>Remember Me</span>
+
+                <button type="submit" class="submit-btn" value="Login">Log in</button>
+
+
+            </form>
+
+            
+
+            <!--<button onclick="register()">Non hai un account? Registrati ora</button> -->
+
+
+            <form class="form" action="./registrazione.php" method="POST" id="register-form">
+
+                <input type="text" class="input-field" placeholder="Username" name="username" required>
+
+                <input type="text" class="input-field" placeholder="Password" name="password" required>
+
+                <input type="text" class="input-field" placeholder="Confirm Password" name="confirm_password" required>
+
+                <input type="checkbox" class="checkbox">
+                <span>Accetto i termini e le condizioni</span>
+
+                <button type="submit" class="submit-btn">Register</button>
+
+            </form>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        var username = getCookie("username");
+        var password = getCookie("password");
+        if(username!='') document.getElementById("log_username").value=username;
+        if(password!='') document.getElementById("log_password").value=password;
+    </script>
+    <script>
+
+        var log = document.getElementById("login-form");
+        var reg = document.getElementById("register-form");
+        var btn = document.getElementById("btn-color");
+
+        function register() {
+            log.style.left = "-400px";
+            reg.style.left = "50px";
+            btn.style.left = "110px";
+        }
+
+        function login() {
+            log.style.left = "50px";
+            reg.style.left = "450px";
+            btn.style.left = "0px";
+        }
+
+    </script>
+    <script>
+        if (location.search != "") {
+            var x = location.search.substr(1).split(";");
+
+            var y = x[0].split("=");
+
+            if (y[1] == 'true') register();
+            else login();
+
+        }
+    </script>
+</body>
+
+</html>
