@@ -1,11 +1,6 @@
 $(document).ready(function(){
             
-    /* edit button*/ 
-    function apri_modal_esame(){
-        $("#exampleModalScrollable").modal('show');
-    }
-
-    $(".fa-edit").click(apri_modal_esame);
+    
     
     function chiudi_modal_esame(){
         $("#exampleModalScrollable").modal('hide');
@@ -15,8 +10,9 @@ $(document).ready(function(){
 
     /* rimuovi esame button*/ 
     //todo lanciare un alert "sei sicuro di voler rimuovere un esame e tuttti i suoi contenuti ?"
-   
-    function rimuovi_esame(){
+
+    
+    /*function rimuovi_esame(){
         $(this).parent().parent().remove();
         
         var nome_esame = $(this).parent().siblings(".nome_esame").text();
@@ -42,7 +38,7 @@ $(document).ready(function(){
         $.getScript("./chart.js");
         scrivi_numeri();
     }
-    $(".fa-trash-alt").click(rimuovi_esame);
+    $(".fa-trash-alt").click(rimuovi_esame);*/
 
     /*aggiungi esame button */
     $("#aggiungi-btn").click(function apri_form_esame(){
@@ -132,8 +128,8 @@ $(document).ready(function(){
                                 '<td class="btn-r"><i class="fas fa-trash-alt"></i></td>'+
                                 '</tr>');
                 }
-                $("#table_body").children(":first").children(".btn-e").children().click(apri_modal_esame);
-                $("#table_body").children(":first").children(".btn-r").children().click(rimuovi_esame);
+                $("#table_body").children(":first").children(".btn-e").children().click(tab_esame.apri_modal_esame);
+                $("#table_body").children(":first").children(".btn-r").children().click(tab_esame.rimuovi_esame);
             },
             error: function(msg){
                 alert("errore");

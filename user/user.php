@@ -25,7 +25,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <!-- load JQuery-->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="./user.js"></script> 
+    
     
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -93,8 +93,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <!-- tabella esami -->
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                       
+                    <tr>                       
                         <div class="info-esame" id="info-esame">
                             <div class="info-header">
                                 <h1>Info esame</h1>
@@ -132,7 +131,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                             $("#voto_info").attr("hidden",true);
                                             $("#data_sostenuto").attr("hidden",true);
                                         }
-
                                     })
                                 </script>
                             </div>
@@ -146,7 +144,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <th scope="col">Sostenuto</th>
                         <th scope="col">Voto</th>
                         <th scope="col">Cfu</th>
-                        <th scope="col"></th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Remove</th>
                     </tr>
                 </thead>
                 <!--ho associato a #table_body un oggetto vue definito in vue.js-->
@@ -158,17 +157,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <i v-if="esame.sostenuto=='t'" class='fas fa-check-circle'> </i>
                         <i v-else class='far fa-times-circle'></i>
                         </td>
-                        <td >{{esame.voto}}</td>
+                        <td>{{esame.voto}}</td>
                         <td>{{esame.cfu}}</td>
-                        <td><i class='fas fa-edit'></i></td>
-                        <td><i class='fas fa-trash-alt'></i></td>
-                    </tr>
-                    
+                        <td><i v-on:click="apri_modal_esame" class='fas fa-edit'></i></td>
+                        <td><i v-on:click="rimuovi_esame" class='fas fa-trash-alt'></i></td>
+                    </tr>                   
                 </tbody>
-                <script src="./vue.js"></script>
+                
             </table>
             
-    </section>
+</section>
 
 
 
@@ -183,7 +181,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </button>
       </div>
       <div class="modal-body" id="modal_body">
-        .ndfgdndn
+        <h1>Nome: {{esame.nome_esame}}</h1>
+        <h1 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h1>
+        <h1 v-else>Sostenuto: Ancora da sostenere </h1>
+        <h1>CFU: {{esame.cfu}}</h1>
+        <h1>Voto: {{esame.voto}}</h1>
+        
+        
+
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary close_modal" data-dismiss="modal">Close</button>
@@ -192,6 +198,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
   </div>
 </div>
+<script src="./user.js"></script> 
+<script src="./vue.js"></script>
 
       
 </body>
