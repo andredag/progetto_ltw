@@ -156,6 +156,7 @@ nav.scroll_animation {
   top: 20%;
   left: 10%;
   right: 10%;
+  
 }
 
 .container .row {
@@ -209,6 +210,7 @@ nav.scroll_animation {
 /* esami */
 
 .esami {
+  margin-top: 10px;
   min-height: 80vh;
   width: 100%;
   background: white;

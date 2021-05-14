@@ -20,16 +20,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/toogle_menu.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.min.js"></script>
     <title>User page</title>
 
     <!-- load JQuery-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
-    <script src="./user.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./user.js"></script> 
     
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="./chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 </head>
 <body>
 
@@ -144,66 +149,50 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                
+                <!--ho associato a #table_body un oggetto vue definito in vue.js-->
                 <tbody id="table_body">
-                    <?php
-                        //  query the database to get exams info.
-                        $utente = $_SESSION["id"];
-                        $query = "SELECT esame.nome_esame, esame.voto, esame.cfu , esame.sostenuto
-                        FROM esame
-                        where esame.id_utente = $1 
-                        ORDER BY esame.created_at DESC";
-                        
-                        if($stmt = pg_prepare($link,"ps", $query)){
-        
-                            // Attempt to execute the prepared statement
-                            if($result=pg_execute($link,"ps",array($utente))){
-                                //to do 
-                                while ( $line = pg_fetch_assoc($result)){
-                                    $nome_esame= $line["nome_esame"];
-                                    $voto=$line["voto"];
-                                    $cfu=$line["cfu"];
-                                    $sostenuto=$line["sostenuto"];
-                                    if($sostenuto=="t"){
-                                    echo "
-                                    <tr class='riga_tabella'>
-                                        <td></td>
-                                        <td class='nome_esame'>$nome_esame </td>
-                                        <td>
-                                            <i class='fas fa-check-circle'> </i>
-                                        </td>
-                                        <td >$voto</td>
-                                        <td>$cfu</td>
-                                        <td><i class='fas fa-edit'></i></td>
-                                        <td><i class='fas fa-trash-alt'></i></td>
-                                    </tr>
-                                    "; 
-                                    }
-                                    else{
-                                        echo "
-                                    <tr class='riga_tabella'>
-                                        <td></td>
-                                        <td class='nome_esame'>$nome_esame</td>
-                                        <td>
-                                            <i class='far fa-times-circle'></i>
-                                        </td>
-                                        <td >$voto</td>
-                                        <td>$cfu</td>
-                                        <td ><i class='fas fa-edit'></i></td>
-                                        <td><i class='fas fa-trash-alt'></i></td>
-                                    </tr>
-                                    ";
-                                    }
-                                }
-                            } else{
-                                echo "Oops! Something went wrong. Please try again later.";
-                            }
-                        }   
-                    ?>
+                    <tr class='riga_tabella' v-for="esame in esami">
+                        <td></td>
+                        <td class='nome_esame'>{{esame.nome_esame}}</td>
+                        <td>
+                        <i v-if="esame.sostenuto=='t'" class='fas fa-check-circle'> </i>
+                        <i v-else class='far fa-times-circle'></i>
+                        </td>
+                        <td >{{esame.voto}}</td>
+                        <td>{{esame.cfu}}</td>
+                        <td><i class='fas fa-edit'></i></td>
+                        <td><i class='fas fa-trash-alt'></i></td>
+                    </tr>
+                    
                 </tbody>
+                <script src="./vue.js"></script>
             </table>
+            
     </section>
 
-        
+
+
+<!-- Modal HTML -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_body">
+        .ndfgdndn
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close_modal" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+      
 </body>
 </html>

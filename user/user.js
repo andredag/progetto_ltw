@@ -1,18 +1,21 @@
 $(document).ready(function(){
             
     /* edit button*/ 
-
     function apri_modal_esame(){
-        alert("Qui va messo il codice per aprire il modal con le info per l'esame");
+        $("#exampleModalScrollable").modal('show');
     }
 
     $(".fa-edit").click(apri_modal_esame);
     
-    
+    function chiudi_modal_esame(){
+        $("#exampleModalScrollable").modal('hide');
+    }
+
+    $(".close_modal").click(chiudi_modal_esame);
+
     /* rimuovi esame button*/ 
     //todo lanciare un alert "sei sicuro di voler rimuovere un esame e tuttti i suoi contenuti ?"
-
-    
+   
     function rimuovi_esame(){
         $(this).parent().parent().remove();
         
