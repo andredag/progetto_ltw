@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $data_sostenuto = $_POST["data_sostenuto"];
         $id = $_SESSION["id"];
         if($sostenuto=="false") $voto=0;
+        if($data_sostenuto=="") $data_sostenuto=NULL;
         $query = "INSERT INTO esame(nome_esame,voto,cfu,id_utente,sostenuto,data_sostenuto) VALUES($1,$2,$3,$4,$5,$6)";
         if($stmt = pg_prepare($link,"ps", $query)){
         

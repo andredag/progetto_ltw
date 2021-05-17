@@ -1,54 +1,49 @@
 $(document).ready(function(){
             
-    
-    
+    //se utente clicca sostenuto nel modal aggiungi esame 
+    //viene visualizzato voto e data sostenuto
+    $("#flexCheckDefault").change(function(){                                              
+        var value = $(this).prop("checked");
+        if(value==true){
+            $("#voto_info").attr("hidden",false);
+            $("#data_sostenuto").attr("hidden",false);
+        }
+        else {
+            $("#voto_info").attr("hidden",true);
+            $("#data_sostenuto").attr("hidden",true);
+        }
+    })
+    //aggancio al click di aggiungi-btn l'evento "apro modal aggi8ungi esame"
+    $("#aggiungi-btn").click(function(){
+        $("#modal-esame").modal('show');
+    })
+    //funzione per pulire il modal dopo la sua chiusura 
+    function undo_dopo_exit(){
+        $(".modal-body input[target=nome]").val('');
+        $(".modal-body input[target=voto]").val('');
+        $(".modal-body input[target=cfu]").val('');
+        $(".modal-body input[target=data_sostenuto]").val('');
+        $("#flexCheckDefault").attr('checked',false);
+        $("#voto_info").attr("hidden",true);
+        $("#data_sostenuto").attr("hidden",true);
+        $("#alert").fadeOut();
+    }
+    //aggancio alla chiusura del modal aggiungi esame l'evento "chiudi modal" e pulisce modal
+    $("#btn-close").click(function(){
+        $("#modal-esame").modal('hide');
+        undo_dopo_exit();
+        }
+    )
+
+
+    //funzione che chiude il modal esame
     function chiudi_modal_esame(){
         $("#exampleModalScrollable").modal('hide');
     }
 
     $(".close_modal").click(chiudi_modal_esame);
 
-    /* rimuovi esame button*/ 
-    //todo lanciare un alert "sei sicuro di voler rimuovere un esame e tuttti i suoi contenuti ?"
-
     
-    /*function rimuovi_esame(){
-        $(this).parent().parent().remove();
-        
-        var nome_esame = $(this).parent().siblings(".nome_esame").text();
-        
-        
-        $.ajax({
-            type: "POST",
-            url: "./invia_dati_esame.php",
-            data: "nome_esame="+nome_esame+"&remove=true",
-            dataType: "html" ,
-            success: function(msg){
-                
-                alert("esame rimosso");
-            },
-            error: function(msg){
-                alert("errore");
-            },
-            beforeSend: function(){
-                alert("sei sicuro coglione?");
-            }
-        });
-        //aggiorna i grafici e i numeri vicino.
-        $.getScript("./chart.js");
-        scrivi_numeri();
-    }
-    $(".fa-trash-alt").click(rimuovi_esame);*/
-
-    /*aggiungi esame button */
-    $("#aggiungi-btn").click(function apri_form_esame(){
-        $(".info-esame").show();
-    });
-
-    /* esci form button*/
-    $("#btn-close").click(function chiudi_form_esame(){
-        $(".info-esame").hide();
-    });
 
     /* ok form button invia dati al server per aggiungere l'esame e aggiunge l'html per l'esame*/
     $("#ok-btn").click(function ok_form_esame(){
@@ -88,7 +83,7 @@ $(document).ready(function(){
         }
 
         
-        $(".info-esame").hide();
+        $("#modal-esame").modal('hide');
         $("#alert").fadeOut();
         $.ajax({
             type: "POST",
@@ -101,7 +96,7 @@ $(document).ready(function(){
                   "&add=true",
             dataType: "html" ,
             success: function(msg){
-                alert(msg);
+                
                 if(sostenuto==true){
                 $("#table_body").prepend('<tr class="riga_tabella"> '
                                 +'<td></td>'+
@@ -135,18 +130,15 @@ $(document).ready(function(){
                 alert("errore");
             } 
         });
-        
-        $(this).siblings("input[target=nome]").val('');
-        $(this).siblings("input[target=voto]").val('');
-        $(this).siblings("input[target=cfu]").val('');
-        $(this).siblings("input[target=data_sostenuto]").val('');
+        undo_dopo_exit();
 
         //aggiorna i grafici e i numeri vicino.
         $.getScript("./chart.js");
         scrivi_numeri();
+
     });
 
-       
+    //funzione per aggiornare media a/p cfu e num esame nella sezione statistiche
     function scrivi_numeri(){  
     $.ajax({
         url: "./getMediaA.php",

@@ -9,12 +9,11 @@ require_once "../config/config.php";
 
 
 $utente = $_SESSION["id"];
-$query = "SELECT esame.nome_esame, esame.voto, esame.cfu , esame.sostenuto , 
-esame.data_sostenuto
-FROM esame
-where esame.id_utente = $1 and esame.nome_esame = $2";
+$query = "SELECT argomento.nome_argomento, argomento.pallino
+FROM argomento
+where argomento.id_utente = $1 and argomento.nome_esame = $2";
 
-$response = "";
+$response = array();
 
 if($stmt = pg_prepare($link,"ps", $query)){
 
@@ -23,7 +22,7 @@ if($stmt = pg_prepare($link,"ps", $query)){
                 
         while ( $line = pg_fetch_assoc($result)){
             
-            $response=$line;
+            $response[]=$line;
         }
 
         echo json_encode($response);

@@ -22,7 +22,7 @@ nav {
   align-items: center;
   position: fixed;
   width: 100%;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
   z-index: 20;
 }
@@ -159,9 +159,10 @@ nav.scroll_animation {
   
 }
 
-.container .row {
+.container-fluid .row {
   border: 3px solid black;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .col h3 {
@@ -169,17 +170,19 @@ nav.scroll_animation {
   top: 50%;
 }
 .chart-box {
-  transition: transform 0.2s;
+  /*transition: transform 0.2s;*/
+  width: fit-content;
   position: relative;
   top: 0%;
   bottom: 0%;
   right: 0%;
   left: 0%;
+  
 }
 
-.chart-box:hover {
+/*.chart-box:hover {
   transform: scale(1.5);
-}
+}*/
 /*
 .riga_hint {
   margin-top: 5%;

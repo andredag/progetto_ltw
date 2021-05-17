@@ -13,6 +13,9 @@ var tab_esame = new Vue({
         axios.get('getEsame.php',{params: {nome: modal_esame.nome_esame}})
         .then(function (response) {
            modal_esame.esame = response.data;
+           modal_esame.getArg();
+           modal_esame.getLinks();
+           modal_esame.getNote();
         })
         .catch(function (error) {
            console.log(error);
@@ -33,6 +36,8 @@ var tab_esame = new Vue({
 
       //funzione da agganciare al bottone rimuovi esame
       rimuovi_esame: function(event){
+        var conferma= confirm("Sei sicuro di voler rimuovere l'esame con tutti i suoi contenuti?");
+        if(!conferma) return false;
         //rimuovo il codice html dalla pagina
         event.target.parentElement.parentElement.remove();
         //salvo il nome dell'esame da eliminare
@@ -44,14 +49,12 @@ var tab_esame = new Vue({
             data: "nome_esame="+nome_esame+"&remove=true",
             dataType: "html" ,
             success: function(msg){
-                alert("esame rimosso");
+                //alert("esame rimosso");
             },
             error: function(msg){
                 alert("errore");
-            },
-            beforeSend: function(){
-                alert("sei sicuro coglione?");
             }
+            
         });
         //aggiorna i grafici e i numeri vicino.
         $.getScript("./chart.js");
@@ -121,9 +124,40 @@ var modal_esame = new Vue({
   el: '#modal_body',
   data: {
     nome_esame: " " ,
-    esame: "ciao"
+    esame: " ",
+    argomenti: " ",
+    links: " ",
+    note: " "
+
     
   },
   methods: {
+      getArg:function(){
+        axios.get('getArg.php',{params: {nome: modal_esame.nome_esame}})
+        .then(function (response) {
+           modal_esame.argomenti = response.data;
+        })
+        .catch(function (error) {
+           console.log(error);
+        });
+      },
+      getlinks:function(){
+        axios.get('getLinks.php',{params: {nome: modal_esame.nome_esame}})
+        .then(function (response) {
+           modal_esame.links = response.data;
+        })
+        .catch(function (error) {
+           console.log(error);
+        });
+      },
+      getNote:function(){
+        axios.get('getNote.php',{params: {nome: modal_esame.nome_esame}})
+        .then(function (response) {
+           modal_esame.note = response.data;
+        })
+        .catch(function (error) {
+           console.log(error);
+        });
+      }
   }
 })

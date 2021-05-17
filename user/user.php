@@ -43,7 +43,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!--navbar -->
     <nav id="nav_bar">
           <div class="logo"> 
-             <img src="../images/logo.png" >
+             <img src="../images/Exams-rafiki.png" >
              <h1><?php echo htmlspecialchars($_SESSION["username"]); ?></h1>
           </div>           
           <div class="nav-links" id="nav-links">
@@ -62,7 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- stats -->
     <div class="stats" id= "stats">
        
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col "><h3>Media Aritmetica</h3></div>
                 <div class="col "><h3 id="title-media-a"></h3></div>
@@ -94,49 +94,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <table class="table table-hover">
                 <thead>
                     <tr>                       
-                        <div class="info-esame" id="info-esame">
-                            <div class="info-header">
-                                <h1>Info esame</h1>
-                                <button id="btn-close">&times;</button>
-                            </div>
-                            <div class="alert alert-warning" role="alert" id="alert" >
-                            </div>
-                            <div class="info-body">
-                                <!--<form action="./invia_dati_esame.php" id="get-info" method="POST">-->
-                                    <input type="text" placeholder="Nome" target="nome" required>
-                                    
-                                    <input type="text" placeholder="Cfu" target="cfu" required>
-                                   
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" target="sostenuto" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Sostenuto
-                                        </label>
-                                    </div>
-                                    
-                                    <input type="text" placeholder="Voto" target="voto" id="voto_info" hidden=true>
-                                    <br>
-                                    <input type="date" target="data_sostenuto" id="data_sostenuto" hidden=true>
-                                    <button id="ok-btn" type="submit" value="ok" >Ok</button>
-                                <!--</form>-->
-                                <script>
-                                    $("#flexCheckDefault").change(function(){
-                                        
-                                        var value = $(this).prop("checked");
-                                        if(value==true){
-                                             $("#voto_info").attr("hidden",false);
-                                             $("#data_sostenuto").attr("hidden",false);
-                                        }
-                                        else {
-                                            $("#voto_info").attr("hidden",true);
-                                            $("#data_sostenuto").attr("hidden",true);
-                                        }
-                                    })
-                                </script>
-                            </div>
-                        </div>
+                        <!-- Modal -->
                         <th scope="col" id="aggiungi_box">
-                            <i id="aggiungi-btn" class="fas fa-plus-square"></i>
+                            <i id="aggiungi-btn" data-toggle="modal" data-target="#modal-esame" class="fas fa-plus-square"></i>
                             <br>
                             <h4>Aggiungi esame</h4>
                         </th>
@@ -168,14 +128,49 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             
 </section>
 
-
-
-<!-- Modal HTML -->
+<!-- Modal Aggiungi Esame -->
+<div class="modal fade" id="modal-esame" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Info esame</h5>
+                <button type="button" id="btn-close" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                                        
+            <div class="alert alert-warning" role="alert" id="alert" >
+            </div>
+                                        
+            <div class="modal-body info-body">
+                <input type="text" placeholder="Nome" target="nome" required>
+                                                
+                <input type="text" placeholder="Cfu" target="cfu" required>
+                                            
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" target="sostenuto" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Sostenuto
+                    </label>
+                </div>
+                                                
+                <input type="text" placeholder="Voto" target="voto" id="voto_info" hidden=true>
+                <br>
+                <input type="date" target="data_sostenuto" id="data_sostenuto" hidden=true>
+                <button id="ok-btn" type="submit" value="ok"  data-dismiss="modal">Ok</button>
+                                            
+                                            
+            </div>
+        </div>
+                                    
+    </div>
+</div>
+<!-- Modal esame HTML -->
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">INFO ESAME</h5>
         <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -186,14 +181,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <h1 v-else>Sostenuto: Ancora da sostenere </h1>
         <h1>CFU: {{esame.cfu}}</h1>
         <h1>Voto: {{esame.voto}}</h1>
-        
-        
+        <h1>Data Sostenuto: {{esame.data_sostenuto}}</h1>
 
+        <hr>
+        <h1>PROGRAMMA</h1>
+        <!--<h1>{{argomenti}}</h1>-->
+
+        <ol>
+            <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
+        </ol>
+
+        <hr>
+        <h1>LINKS</h1>
+        <ul>
+            <li v-for="link in links"><h1>{{link.descrizione_link}} {{link.url}}</h1></li>
+        </ul>
+
+        <hr>
+        <h1>NOTE</h1>
+        <ul>
+            <li v-for="nota in note"><h1>{{nota.descrizione}}</h1></li>
+        </ul>
+        
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary close_modal" data-dismiss="modal">Close</button>
-       
       </div>
     </div>
   </div>
