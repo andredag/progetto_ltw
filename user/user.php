@@ -96,7 +96,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <tr>                       
                         <!-- Modal -->
                         <th scope="col" id="aggiungi_box">
-                            <i id="aggiungi-btn" data-toggle="modal" data-target="#modal-esame" class="fas fa-plus-square"></i>
+                            <i id="aggiungi-btn" data-toggle="modal" data-target="#modal-aggiungi" class="fas fa-plus-square"></i>
                             <br>
                             <h4>Aggiungi esame</h4>
                         </th>
@@ -129,7 +129,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </section>
 
 <!-- Modal Aggiungi Esame -->
-<div class="modal fade" id="modal-esame" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal-aggiungi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -166,16 +166,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 </div>
 <!-- Modal esame HTML -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="modal-esame" tabindex="-1" role="dialog" aria-labelledby="modal-esame-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">INFO ESAME</h5>
+        <h5 class="modal-title" id="modal-esame-title">INFO ESAME</h5>
         <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="modal_body">
+      <div class="modal-body" id="body-modal-esame">
         <h1>Nome: {{esame.nome_esame}}</h1>
         <h1 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h1>
         <h1 v-else>Sostenuto: Ancora da sostenere </h1>
@@ -206,7 +206,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close_modal" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary close_modal close" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

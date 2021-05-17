@@ -156,7 +156,6 @@ nav.scroll_animation {
   top: 20%;
   left: 10%;
   right: 10%;
-  
 }
 
 .container-fluid .row {
@@ -177,37 +176,10 @@ nav.scroll_animation {
   bottom: 0%;
   right: 0%;
   left: 0%;
-  
 }
 
 /*.chart-box:hover {
   transform: scale(1.5);
-}*/
-/*
-.riga_hint {
-  margin-top: 5%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.hint {
-  flex-basis: 31%;
-  background: #fff3f3;
-  border-radius: 10px;
-  margin-bottom: 5%;
-  padding: 20px 12px;
-  transition: 0.5s;
-}
-
-.hint:hover {
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-}
-
-
-@media (max-width: 900px) {
-  .riga_hint {
-    flex-direction: column;
-  }
 }*/
 
 /* esami */
@@ -220,26 +192,7 @@ nav.scroll_animation {
   position: relative;
 }
 
-.info-esame {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid black;
-  border-radius: 10px;
-  background-color: white;
-  width: 50vh;
-  display: none;
-}
-.info-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid black;
-}
-
-.info-header #btn-close {
+.close {
   cursor: pointer;
   border: none;
   outline: none;

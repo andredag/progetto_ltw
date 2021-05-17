@@ -8,9 +8,9 @@ var tab_esame = new Vue({
       //in questa funzione apro il modal e carico il necessario per visualizzare i dettagli dell'esame
       apri_modal_esame: function(event){
         
-        $("#exampleModalScrollable").modal('show');
+        $("#modal-esame").modal('show');
         modal_esame.nome_esame=event.target.parentElement.parentElement.children[1].innerText;
-        axios.get('getEsame.php',{params: {nome: modal_esame.nome_esame}})
+        axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati:"nome_esame"}})
         .then(function (response) {
            modal_esame.esame = response.data;
            modal_esame.getArg();
@@ -25,7 +25,7 @@ var tab_esame = new Vue({
       //funzione che carica tutti gli esami dell'utente nell'array esami poi l'html di user.php farà il rendering
       allRecords: function(){
   
-        axios.get('getEsami.php')
+        axios.get('getDatiEsame.php', {params:{richiesta_dati:"lista_esami"}})
         .then(function (response) {
            tab_esame.esami = response.data;
         })
@@ -121,7 +121,7 @@ var tab_esame = new Vue({
 })
 
 var modal_esame = new Vue({
-  el: '#modal_body',
+  el: '#body-modal-esame',
   data: {
     nome_esame: " " ,
     esame: " ",
@@ -133,7 +133,7 @@ var modal_esame = new Vue({
   },
   methods: {
       getArg:function(){
-        axios.get('getArg.php',{params: {nome: modal_esame.nome_esame}})
+        axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati: "argomenti"}})
         .then(function (response) {
            modal_esame.argomenti = response.data;
         })
@@ -141,8 +141,8 @@ var modal_esame = new Vue({
            console.log(error);
         });
       },
-      getlinks:function(){
-        axios.get('getLinks.php',{params: {nome: modal_esame.nome_esame}})
+      getLinks:function(){
+        axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati:"link"}})
         .then(function (response) {
            modal_esame.links = response.data;
         })
@@ -151,7 +151,7 @@ var modal_esame = new Vue({
         });
       },
       getNote:function(){
-        axios.get('getNote.php',{params: {nome: modal_esame.nome_esame}})
+        axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati: "note"}})
         .then(function (response) {
            modal_esame.note = response.data;
         })

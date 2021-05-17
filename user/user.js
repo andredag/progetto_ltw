@@ -15,7 +15,7 @@ $(document).ready(function(){
     })
     //aggancio al click di aggiungi-btn l'evento "apro modal aggi8ungi esame"
     $("#aggiungi-btn").click(function(){
-        $("#modal-esame").modal('show');
+        $("#modal-aggiungi").modal('show');
     })
     //funzione per pulire il modal dopo la sua chiusura 
     function undo_dopo_exit(){
@@ -30,7 +30,7 @@ $(document).ready(function(){
     }
     //aggancio alla chiusura del modal aggiungi esame l'evento "chiudi modal" e pulisce modal
     $("#btn-close").click(function(){
-        $("#modal-esame").modal('hide');
+        $("#modal-aggiungi").modal('hide');
         undo_dopo_exit();
         }
     )
@@ -38,7 +38,7 @@ $(document).ready(function(){
 
     //funzione che chiude il modal esame
     function chiudi_modal_esame(){
-        $("#exampleModalScrollable").modal('hide');
+        $("#modal-esame").modal('hide');
     }
 
     $(".close_modal").click(chiudi_modal_esame);
@@ -83,7 +83,7 @@ $(document).ready(function(){
         }
 
         
-        $("#modal-esame").modal('hide');
+        $("#modal-aggiungi").modal('hide');
         $("#alert").fadeOut();
         $.ajax({
             type: "POST",
