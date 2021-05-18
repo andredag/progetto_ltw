@@ -49,7 +49,7 @@ var tab_esame = new Vue({
             data: "nome_esame="+nome_esame+"&remove=true",
             dataType: "html" ,
             success: function(msg){
-                //alert("esame rimosso");
+                //alert(msg);
             },
             error: function(msg){
                 alert("errore");
@@ -127,7 +127,8 @@ var modal_esame = new Vue({
     esame: " ",
     argomenti: " ",
     links: " ",
-    note: " "
+    note: " ",
+    errore: " "
 
     
   },
@@ -157,6 +158,22 @@ var modal_esame = new Vue({
         })
         .catch(function (error) {
            console.log(error);
+        });
+      },
+      aggiungi_arg:function(){
+        var arg=$("#form_prog input[target=nome_arg]").val();
+        var pallino= $("#form_prog select[target=pallino]").val();
+        if(arg=='' || pallino=='') {
+          return; 
+        }
+        
+        axios.post("invia_dati_esame.php",
+          'add_arg=true'+
+          '&arg='+arg+
+          '&pallino='+pallino+
+          '&esame='+this.nome_esame
+        ).then(function(response){
+          modal_esame.getArg();
         });
       }
   }

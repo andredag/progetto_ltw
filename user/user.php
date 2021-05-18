@@ -186,17 +186,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <hr>
         <h1>PROGRAMMA</h1>
         <!--<h1>{{argomenti}}</h1>-->
-        <div class="form_prog">
-            <button type="submit"> Aggiungi </button>
-            <input type="text" name="nome_argomento" placeholder="Nome Argomento">
-            <select name="pallino" >
+        <div class="form_prog" id="form_prog">
+            <button type="submit" v-on:click="aggiungi_arg"> Aggiungi </button>
+            <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
+            <select name="pallino" target="pallino" >
                 <option></option>
                 <option>Ottimo</option>
                 <option>Meh </option>
                 <option>Da Rivedere</option>
             </select>
+            <h1 id="errore_argomento" hidden="true">{{errore}}</h1>
         </div>
-        <ol>
+        <ol id="lista_arg">
             <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
         </ol>
 
