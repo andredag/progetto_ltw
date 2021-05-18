@@ -50,9 +50,10 @@ var tab_esame = new Vue({
             dataType: "html" ,
             success: function(msg){
                 //alert("esame rimosso");
+                
             },
             error: function(msg){
-                alert("errore");
+                alert(msg);
             }
             
         });
