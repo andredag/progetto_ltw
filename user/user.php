@@ -203,10 +203,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         <hr>
         <h1>LINKS</h1>
-        <div class="form_prog">
-            <button type="submit"> Aggiungi </button>
-            <input type="text" name="descrizione_link" placeholder="Descrizione Link">
-            <input type="text" name="url" placeholder="URL">
+        <div class="form_prog" id="form_link">
+            <button type="submit" v-on:click="aggiungi_link"> Aggiungi </button>
+            <input type="text" name="descrizione_link" placeholder="Descrizione Link" target="descrizione_link">
+            <input type="text" name="url" placeholder="URL" target="url">
         </div>
         <ul>
             <li v-for="link in links">
@@ -218,9 +218,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         <hr>
         <h1>NOTE</h1>
-        <div class="form_prog">
-            <button type="submit"> Aggiungi </button>
-            <input type="text" name="descrizione" placeholder="Descrizione">
+        <div class="form_prog" id="form_note">
+            <button type="submit" v-on:click="aggiungi_nota"> Aggiungi </button>
+            <input type="text" name="descrizione" placeholder="Descrizione" target="nota">
         </div>
         <ul>
             <li v-for="nota in note"><h1>{{nota.descrizione}}</h1></li>

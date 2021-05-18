@@ -63,7 +63,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }
 
-    else echo("ok");
+    else if(isset($_POST["add_nota"]) && ($_POST["add_nota"]==true)){
+        $nota=$_POST["nota"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="INSERT INTO nota(descrizione,nome_esame,id_utente) VALUES($1,$2,$3)";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($nota,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+    else if(isset($_POST["add_link"]) && ($_POST["add_link"]==true)){
+        $descrizione_link=$_POST["descrizione_link"];
+        $url = $_POST["url"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="INSERT INTO link(descrizione_link,url,nome_esame,id_utente) VALUES($1,$2,$3,$4)";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($descrizione_link,$url,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+
+
+    else echo("non eseguo nessuna query");
 }
 
 pg_close($link);

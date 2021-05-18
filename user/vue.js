@@ -163,6 +163,7 @@ var modal_esame = new Vue({
       aggiungi_arg:function(){
         var arg=$("#form_prog input[target=nome_arg]").val();
         var pallino= $("#form_prog select[target=pallino]").val();
+
         if(arg=='' || pallino=='') {
           return; 
         }
@@ -175,6 +176,38 @@ var modal_esame = new Vue({
         ).then(function(response){
           modal_esame.getArg();
         });
+      },
+
+      aggiungi_nota: function(){
+        var nota=$("#form_note input[target=nota]").val();
+
+        if (nota == "")   return;
+
+        axios.post("invia_dati_esame.php",
+        'add_nota=true'+
+        '&nota='+nota+
+        '&esame='+this.nome_esame
+        ).then(function(response){
+        modal_esame.getNote();
+        });
+      
+      },
+
+      aggiungi_link: function(){
+        var descrizione_link = $("#form_link input[target=descrizione_link]").val();
+        var url = $("#form_link input[target=url]").val();
+
+        if (url == '' || descrizione_link=='')  return;
+
+        axios.post("invia_dati_esame.php",
+        'add_link=true'+
+        '&descrizione_link='+descrizione_link+
+        '&url='+url+
+        '&esame='+this.nome_esame
+        ).then(function(response){
+        modal_esame.getLinks();
+        });
+     
       }
   }
 })
