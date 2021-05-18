@@ -186,19 +186,41 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <hr>
         <h1>PROGRAMMA</h1>
         <!--<h1>{{argomenti}}</h1>-->
-
+        <div class="form_prog">
+            <button type="submit"> Aggiungi </button>
+            <input type="text" name="nome_argomento" placeholder="Nome Argomento">
+            <select name="pallino" >
+                <option></option>
+                <option>Ottimo</option>
+                <option>Meh </option>
+                <option>Da Rivedere</option>
+            </select>
+        </div>
         <ol>
             <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
         </ol>
 
         <hr>
         <h1>LINKS</h1>
+        <div class="form_prog">
+            <button type="submit"> Aggiungi </button>
+            <input type="text" name="descrizione_link" placeholder="Descrizione Link">
+            <input type="text" name="url" placeholder="URL">
+        </div>
         <ul>
-            <li v-for="link in links"><h1>{{link.descrizione_link}} {{link.url}}</h1></li>
+            <li v-for="link in links">
+                <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
+                    <h1>{{link.descrizione_link}}</h1>
+                </a>
+            </li>
         </ul>
 
         <hr>
         <h1>NOTE</h1>
+        <div class="form_prog">
+            <button type="submit"> Aggiungi </button>
+            <input type="text" name="descrizione" placeholder="Descrizione">
+        </div>
         <ul>
             <li v-for="nota in note"><h1>{{nota.descrizione}}</h1></li>
         </ul>

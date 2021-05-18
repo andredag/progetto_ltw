@@ -8,7 +8,7 @@ server with default setting (user 'root' with no password) */
  
 /* Attempt to connect to MySQL database */
 //$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-$link = pg_connect("host=localhost port=5432 dbname=easy-uni user=postgres password=lebron49");
+$link = pg_connect("host=localhost port=5432 dbname=easy-uni user=postgres password=postgres");
  
 // Check connection
 if($link === false){
