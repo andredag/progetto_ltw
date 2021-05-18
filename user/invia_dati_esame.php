@@ -43,6 +43,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
     }
+    else if(isset($_POST["add_arg"]) && ($_POST["add_arg"]==true)){
+        $arg=$_POST["arg"];
+        $pallino=$_POST["pallino"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="INSERT INTO argomento(nome_argomento,pallino,nome_esame,id_utente) VALUES($1,$2,$3,$4)";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($arg,$pallino,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+
+    else echo("ok");
 }
+
 pg_close($link);
 ?>
