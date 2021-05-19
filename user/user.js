@@ -191,8 +191,23 @@ $(document).ready(function(){
     });
     };
 
+    // scrive nei box di stat i valori di media a/p, cfu, numero esami
     scrivi_numeri();
-   
-
+    
+    
+    // mostra campi per aggiungere un argomento
+    $("#btn-arg").click(function(){
+        $("#form_prog").toggle();
+        $(this).hide(); 
+    });
+    
+    //esce dalla parte per aggiungere un argomento, pulendo i campi
+    $("#exit-arg").click(function(){
+        $("#form_prog").toggle();
+        $("#form_prog input").val('');
+        $("#form_prog select").val('');
+        $("#btn-arg").show();
+    });
+    
         
 });

@@ -227,7 +227,7 @@ nav.scroll_animation {
   text-align: center;
 }
 
-.fa-plus-square {
+.table .fa-plus-square {
   font-size: 5em;
 }
 
@@ -237,4 +237,14 @@ nav.scroll_animation {
   justify-content: space-between;
   flex-direction: column;
   position: relative;
+}
+
+/*modal-esame*/
+
+#modal-esame .fa-plus-square {
+  font-size: 2em;
+}
+
+#form_prog {
+  display: none;
 }

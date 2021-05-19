@@ -186,8 +186,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <hr>
         <h1>PROGRAMMA</h1>
         <!--<h1>{{argomenti}}</h1>-->
+        <i class="fas fa-plus-square" id="btn-arg" ></i>
         <div class="form_prog" id="form_prog">
-            <button type="submit" v-on:click="aggiungi_arg"> Aggiungi </button>
+            
             <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
             <select name="pallino" target="pallino" >
                 <option></option>
@@ -196,6 +197,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <option>Da Rivedere</option>
             </select>
             <h1 id="errore_argomento" hidden="true">{{errore}}</h1>
+            <i class="far fa-check-circle" v-on:click="aggiungi_arg"></i>
+            <i class="fas fa-times-circle" id="exit-arg"></i>
         </div>
         <ol id="lista_arg">
             <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
@@ -204,7 +207,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <hr>
         <h1>LINKS</h1>
         <div class="form_prog" id="form_link">
-            <button type="submit" v-on:click="aggiungi_link"> Aggiungi </button>
+            <i class="fas fa-plus-square"  v-on:click="aggiungi_link"></i>
             <input type="text" name="descrizione_link" placeholder="Descrizione Link" target="descrizione_link">
             <input type="text" name="url" placeholder="URL" target="url">
         </div>
@@ -219,7 +222,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <hr>
         <h1>NOTE</h1>
         <div class="form_prog" id="form_note">
-            <button type="submit" v-on:click="aggiungi_nota"> Aggiungi </button>
+            <i class="fas fa-plus-square"  v-on:click="aggiungi_nota"></i>
             <input type="text" name="descrizione" placeholder="Descrizione" target="nota">
         </div>
         <ul>
