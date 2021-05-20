@@ -255,3 +255,19 @@ nav.scroll_animation {
   flex-direction: column;
   align-items: center;
 }
+
+.riga_arg{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+.riga_link{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+.riga_nota{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}

@@ -205,7 +205,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <i class="fas fa-times-circle" id="exit-arg"></i>
             </div>
             <ol id="lista_arg">
-                <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
+                
+                <li v-for="arg in argomenti">
+                <div class="riga_arg">
+                <h3>{{arg.nome_argomento}}</h3>
+                <h3> {{arg.pallino}}</h3>
+                <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
+                </div>
+                </li>
             </ol>
         </div>
         
@@ -219,9 +226,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
         <ul>
             <li v-for="link in links">
+                <div class="riga_link">
                 <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
                     <h1>{{link.descrizione_link}}</h1>
                 </a>
+                <i v-on:click="rimuovi_link" class='fas fa-trash-alt'></i>
+                </div>
             </li>
         </ul>
 
@@ -232,7 +242,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <input type="text" name="descrizione" placeholder="Descrizione" target="nota">
         </div>
         <ul>
-            <li v-for="nota in note"><h1>{{nota.descrizione}}</h1></li>
+            <li v-for="nota in note">
+                <div class="riga_nota">
+                <h1>{{nota.descrizione}}</h1>
+                <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
+                </div>
+            </li>
         </ul>
         
         

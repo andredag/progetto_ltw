@@ -100,6 +100,61 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
     }
+    else if(isset($_POST["remove_arg"]) && ($_POST["remove_arg"]==true)){
+        $arg=$_POST["arg"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="DELETE FROM argomento WHERE nome_argomento=$1 AND nome_esame=$2 AND id_utente=$3";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($arg,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+    else if(isset($_POST["remove_link"]) && ($_POST["remove_link"]==true)){
+        $desc_link=$_POST["link"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="DELETE FROM link WHERE descrizione_link=$1 AND nome_esame=$2 AND id_utente=$3";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($desc_link,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+
+    else if(isset($_POST["remove_nota"]) && ($_POST["remove_nota"]==true)){
+        $nota=$_POST["nota"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $query="DELETE FROM nota WHERE descrizione=$1 AND nome_esame=$2 AND id_utente=$3";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($nota,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
 
 
     else echo("non eseguo nessuna query");

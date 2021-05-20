@@ -208,6 +208,46 @@ var modal_esame = new Vue({
         modal_esame.getLinks();
         });
      
+      },
+      rimuovi_arg: function(event){
+        var nome_arg=event.target.parentElement.children[0].innerText;
+        
+
+        axios.post("invia_dati_esame.php",
+        'remove_arg=true'+
+        '&arg='+nome_arg+
+        '&esame='+this.nome_esame
+        ).then(function(response){
+          
+          modal_esame.getArg();
+        });        
+      },
+      rimuovi_link: function(event){
+        var link=event.target.parentElement.children[0].innerText;
+        
+        alert(link);
+        axios.post("invia_dati_esame.php",
+        'remove_link=true'+
+        '&link='+link+
+        '&esame='+this.nome_esame
+        ).then(function(response){
+          
+          modal_esame.getLinks();
+        });     
+      },
+      rimuovi_nota: function(event){
+        var nota=event.target.parentElement.children[0].innerText;
+        
+
+        axios.post("invia_dati_esame.php",
+        'remove_nota=true'+
+        '&nota='+nota+
+        '&esame='+this.nome_esame
+        ).then(function(response){
+          
+          modal_esame.getNote();
+        });       
       }
+
   }
 })
