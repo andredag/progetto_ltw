@@ -176,6 +176,11 @@ var modal_esame = new Vue({
         ).then(function(response){
           modal_esame.getArg();
         });
+
+        // pulisci i campi dopo aver inserito un argomento
+        $("#form_prog input[target=nome_arg]").val("");
+        $("#form_prog select[target=pallino]").val("");
+
       },
 
       aggiungi_nota: function(){
@@ -190,6 +195,9 @@ var modal_esame = new Vue({
         ).then(function(response){
         modal_esame.getNote();
         });
+
+        // pulisce il campo dopo aver aggiunto una nota
+        $("#form_note input[target=nota]").val("");
       
       },
 
@@ -207,6 +215,11 @@ var modal_esame = new Vue({
         ).then(function(response){
         modal_esame.getLinks();
         });
+
+        // pulisci i campi dopo aver aggiunto un link
+        $("#form_link input[target=descrizione_link]").val("");
+        $("#form_link input[target=url]").val("");
+
      
       },
       rimuovi_arg: function(event){
@@ -225,7 +238,7 @@ var modal_esame = new Vue({
       rimuovi_link: function(event){
         var link=event.target.parentElement.children[0].innerText;
         
-        alert(link);
+        //alert(link);
         axios.post("invia_dati_esame.php",
         'remove_link=true'+
         '&link='+link+

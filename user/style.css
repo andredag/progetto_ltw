@@ -201,7 +201,8 @@ nav.scroll_animation {
   font-weight: bold;
 }
 
-.fa-times-circle {
+.fa-times-circle,
+.fa-circle {
   color: red;
 }
 
@@ -245,8 +246,11 @@ nav.scroll_animation {
   font-size: 2em;
 }
 
-#form_prog {
-  display: none;
+#form_prog,
+#form_link,
+#form_note {
+  display: inline-block;
+  align-items: center;
 }
 
 .modal-box {
@@ -256,18 +260,30 @@ nav.scroll_animation {
   align-items: center;
 }
 
-.riga_arg{
-  display:flex;
-  justify-content: space-between;
-  margin-top: 10%;
+#lista_arg,
+#lista_note,
+#lista_link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 5%;
+  width: 80%;
 }
-.riga_link{
-  display:flex;
-  justify-content: space-between;
-  margin-top: 10%;
+
+.riga_arg {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.riga_nota{
-  display:flex;
-  justify-content: space-between;
-  margin-top: 10%;
+.riga_link {
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
+.riga_nota {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

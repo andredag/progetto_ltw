@@ -194,20 +194,56 @@ $(document).ready(function(){
     // scrive nei box di stat i valori di media a/p, cfu, numero esami
     scrivi_numeri();
     
+    $("#form_prog").hide();
+    $("#form_note").hide();
+    $("#form_link").hide();
     
     // mostra campi per aggiungere un argomento
     $("#btn-arg").click(function(){
-        $("#form_prog").toggle();
+        $("#form_prog").show();
         $(this).hide(); 
     });
     
     //esce dalla parte per aggiungere un argomento, pulendo i campi
     $("#exit-arg").click(function(){
-        $("#form_prog").toggle();
+        $("#form_prog").hide();
         $("#form_prog input").val('');
         $("#form_prog select").val('');
         $("#btn-arg").show();
     });
+
+    // mostra campi per aggiungere un link
+    $("#btn-link").click(function(){
+        $("#form_link").show();
+        $(this).hide(); 
+    });
+
+    //esce dalla parte per aggiungere un link, pulendo i campi
+    $("#exit-link").click(function(){
+        $("#form_link").hide();
+        $("#form_link input").val('');
+        $("#btn-link").show();
+    });
+
+    // mostra campi per aggiungere una nota
+    $("#btn-nota").click(function(){
+        $("#form_note").show();
+        $(this).hide(); 
+    });
     
+    //esce dalla parte per aggiungere una nota, pulendo i campi
+    $("#exit-nota").click(function(){
+        $("#form_note").hide();
+        $("#form_note input").val('');
+        $("#btn-nota").show();
+    });
+    
+    // quando si chiude il modal esame vengono nascoste tutte le form
+    // e vengono puliti tutti i campi
+    $("#exit_modal_esame").click(function(){
+        $("#exit-nota").click();
+        $("#exit-link").click();
+        $("#exit-arg").click();
+    });
         
 });

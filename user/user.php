@@ -169,27 +169,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div class="modal fade" id="modal-esame" tabindex="-1" role="dialog" aria-labelledby="modal-esame-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="modal-esame-title">INFO ESAME</h5>
-        <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close close_modal" id="exit_modal_esame" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body" id="body-modal-esame">
+
         <div class= "modal-box" id="info-box">
             <h1 class="box-title">DATI GENERALI</h1>
-            <h1>Nome: {{esame.nome_esame}}</h1>
-            <h1 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h1>
-            <h1 v-else>Sostenuto: Ancora da sostenere </h1>
-            <h1>CFU: {{esame.cfu}}</h1>
-            <h1>Voto: {{esame.voto}}</h1>
-            <h1>Data Sostenuto: {{esame.data_sostenuto}}</h1>
+            <h2>Nome: {{esame.nome_esame}}</h2>
+            <h2 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h2>
+            <h2 v-else>Sostenuto: Ancora da sostenere </h2>
+            <h2>CFU: {{esame.cfu}}</h2>
+            <h2>Voto: {{esame.voto}}</h2>
+            <h2>Data Sostenuto: {{esame.data_sostenuto}}</h2>
         </div>
         
         <hr>
+
+
         <div class="modal-box" id="programma-box">
+
             <h1 class="box-title">PROGRAMMA</h1>
-            
             <i class="fas fa-plus-square" id="btn-arg" ></i>
             <div class="form_prog" id="form_prog">
                 
@@ -208,9 +213,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 
                 <li v-for="arg in argomenti">
                 <div class="riga_arg">
-                <h3>{{arg.nome_argomento}}</h3>
-                <h3> {{arg.pallino}}</h3>
-                <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
+                    <h3>{{arg.nome_argomento}}</h3>
+                    <h3> {{arg.pallino}}</h3>
+                    <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
                 </div>
                 </li>
             </ol>
@@ -218,37 +223,51 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
 
         <hr>
-        <h1>LINKS</h1>
-        <div class="form_prog" id="form_link">
-            <i class="fas fa-plus-square"  v-on:click="aggiungi_link"></i>
-            <input type="text" name="descrizione_link" placeholder="Descrizione Link" target="descrizione_link">
-            <input type="text" name="url" placeholder="URL" target="url">
-        </div>
-        <ul>
-            <li v-for="link in links">
-                <div class="riga_link">
-                <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
-                    <h1>{{link.descrizione_link}}</h1>
-                </a>
-                <i v-on:click="rimuovi_link" class='fas fa-trash-alt'></i>
-                </div>
-            </li>
-        </ul>
 
-        <hr>
-        <h1>NOTE</h1>
-        <div class="form_prog" id="form_note">
-            <i class="fas fa-plus-square"  v-on:click="aggiungi_nota"></i>
-            <input type="text" name="descrizione" placeholder="Descrizione" target="nota">
+        <div class="modal-box" id="link-box">
+            <h1 class="box-title">LINKS</h1>
+            <i class="fas fa-plus-square" id="btn-link" ></i>
+
+            <div class="form_prog" id="form_link">
+                
+                <input type="text" name="descrizione_link" placeholder="Descrizione Link" target="descrizione_link">
+                <input type="text" name="url" placeholder="URL" target="url">
+                <i class="far fa-check-circle" v-on:click="aggiungi_link"></i>
+                <i class="fas fa-times-circle" id="exit-link"></i>
+            </div>
+            <ul id="lista_link">
+                <li v-for="link in links">
+                    <div class="riga_link">
+                        <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
+                            <h2>{{link.descrizione_link}}</h2>
+                        </a>
+                        <i v-on:click="rimuovi_link" class='fas fa-trash-alt'></i>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <ul>
-            <li v-for="nota in note">
-                <div class="riga_nota">
-                <h1>{{nota.descrizione}}</h1>
-                <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
-                </div>
-            </li>
-        </ul>
+        
+        <hr>
+
+        <div class="modal-box" id="note-box">
+            <h1 class="box-title">NOTE</h1>
+            <i class="fas fa-plus-square" id="btn-nota" ></i>
+            <div class="form_prog" id="form_note">
+                <!--<input type="text" name="descrizione" placeholder="Descrizione" target="nota">-->
+                <textarea name="descrizione" placeholder="Descrizione" target="nota" cols="40" rows="5"></textarea>
+                <i class="far fa-check-circle" v-on:click="aggiungi_nota"></i>
+                <i class="fas fa-times-circle" id="exit-nota"></i>
+            </div>
+            <ul id="lista_note">
+                <li v-for="nota in note">
+                    <div class="riga_nota">
+                    <h2>{{nota.descrizione}}</h2>
+                    <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+       
         
         
       </div>
