@@ -176,33 +176,39 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </button>
       </div>
       <div class="modal-body" id="body-modal-esame">
-        <h1>Nome: {{esame.nome_esame}}</h1>
-        <h1 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h1>
-        <h1 v-else>Sostenuto: Ancora da sostenere </h1>
-        <h1>CFU: {{esame.cfu}}</h1>
-        <h1>Voto: {{esame.voto}}</h1>
-        <h1>Data Sostenuto: {{esame.data_sostenuto}}</h1>
-
-        <hr>
-        <h1>PROGRAMMA</h1>
-        <!--<h1>{{argomenti}}</h1>-->
-        <i class="fas fa-plus-square" id="btn-arg" ></i>
-        <div class="form_prog" id="form_prog">
-            
-            <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
-            <select name="pallino" target="pallino" >
-                <option></option>
-                <option>Ottimo</option>
-                <option>Meh </option>
-                <option>Da Rivedere</option>
-            </select>
-            <h1 id="errore_argomento" hidden="true">{{errore}}</h1>
-            <i class="far fa-check-circle" v-on:click="aggiungi_arg"></i>
-            <i class="fas fa-times-circle" id="exit-arg"></i>
+        <div class= "modal-box" id="info-box">
+            <h1 class="box-title">DATI GENERALI</h1>
+            <h1>Nome: {{esame.nome_esame}}</h1>
+            <h1 v-if="esame.sostenuto=='t'">Sostenuto: sostenuto </h1>
+            <h1 v-else>Sostenuto: Ancora da sostenere </h1>
+            <h1>CFU: {{esame.cfu}}</h1>
+            <h1>Voto: {{esame.voto}}</h1>
+            <h1>Data Sostenuto: {{esame.data_sostenuto}}</h1>
         </div>
-        <ol id="lista_arg">
-            <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
-        </ol>
+        
+        <hr>
+        <div class="modal-box" id="programma-box">
+            <h1 class="box-title">PROGRAMMA</h1>
+            
+            <i class="fas fa-plus-square" id="btn-arg" ></i>
+            <div class="form_prog" id="form_prog">
+                
+                <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
+                <select name="pallino" target="pallino" >
+                    <option></option>
+                    <option>Ottimo</option>
+                    <option>Meh </option>
+                    <option>Da Rivedere</option>
+                </select>
+                <h1 id="errore_argomento" hidden="true">{{errore}}</h1>
+                <i class="far fa-check-circle" v-on:click="aggiungi_arg"></i>
+                <i class="fas fa-times-circle" id="exit-arg"></i>
+            </div>
+            <ol id="lista_arg">
+                <li v-for="arg in argomenti"><h1>{{arg.nome_argomento}} {{arg.pallino}}</h1></li>
+            </ol>
+        </div>
+        
 
         <hr>
         <h1>LINKS</h1>

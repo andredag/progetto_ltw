@@ -248,3 +248,10 @@ nav.scroll_animation {
 #form_prog {
   display: none;
 }
+
+.modal-box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
