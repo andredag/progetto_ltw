@@ -10,7 +10,7 @@ if (isset($_GET["richiesta_dati"]) ){
     if ($_GET["richiesta_dati"]=="note"){
 
         $utente = $_SESSION["id"];
-        $query = "SELECT nota.descrizione
+        $query = "SELECT nota.descrizione , nota.contenuto
         FROM nota
         where nota.id_utente = $1 and nota.nome_esame = $2";
 

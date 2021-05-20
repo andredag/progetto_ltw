@@ -196,6 +196,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <h1 class="box-title">PROGRAMMA</h1>
             <i class="fas fa-plus-square" id="btn-arg" ></i>
+
+            <button id="ordina_arg">Ordina argomenti</button>
+
             <div class="form_prog" id="form_prog">
                 
                 <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
@@ -209,12 +212,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <i class="far fa-check-circle" v-on:click="aggiungi_arg"></i>
                 <i class="fas fa-times-circle" id="exit-arg"></i>
             </div>
+
             <ol id="lista_arg">
                 
                 <li v-for="arg in argomenti">
                 <div class="riga_arg">
+
+                    <h3 v-if="arg.pallino=='Ottimo'"> <i class="fas fa-circle" id="circle-ottimo"></i></h3>
+                    <h3 v-else-if="arg.pallino=='Meh'"><i class="fas fa-circle" id="circle-meh"></i></h3>
+                    <h3 v-if="arg.pallino=='Da Rivedere'"> <i class="fas fa-circle" id="circle-daRivedere"></i></h3>
+                    
                     <h3>{{arg.nome_argomento}}</h3>
-                    <h3> {{arg.pallino}}</h3>
+                   
                     <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
                 </div>
                 </li>
@@ -254,7 +263,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <i class="fas fa-plus-square" id="btn-nota" ></i>
             <div class="form_prog" id="form_note">
                 <!--<input type="text" name="descrizione" placeholder="Descrizione" target="nota">-->
-                <textarea name="descrizione" placeholder="Descrizione" target="nota" cols="40" rows="5"></textarea>
+                <input type="text" name="descrizione" placeholder="descrizione" target="descrizione">
+                <textarea name="contenuto" placeholder="Contenuto" target="nota" cols="40" rows="5"></textarea>
                 <i class="far fa-check-circle" v-on:click="aggiungi_nota"></i>
                 <i class="fas fa-times-circle" id="exit-nota"></i>
             </div>
@@ -262,6 +272,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <li v-for="nota in note">
                     <div class="riga_nota">
                     <h2>{{nota.descrizione}}</h2>
+                    <i class="fas fa-arrow-down" v-on:click="mostra_contenuto"></i>
+                    <i class="fas fa-arrow-up n"  v-on:click="nascondi_contenuto"></i>
+                    <h2 class="contenuto-nota">{{nota.contenuto}}</h2>
                     <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
                     </div>
                 </li>

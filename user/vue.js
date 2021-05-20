@@ -184,20 +184,23 @@ var modal_esame = new Vue({
       },
 
       aggiungi_nota: function(){
-        var nota=$("#form_note input[target=nota]").val();
+        var nota=$("#form_note textarea").val();
+        var descrizione = $("#form_note input[target = descrizione]").val();
 
-        if (nota == "")   return;
+        if (nota == "" || descrizione=="")   return;
 
         axios.post("invia_dati_esame.php",
         'add_nota=true'+
         '&nota='+nota+
+        '&descrizione='+descrizione+
         '&esame='+this.nome_esame
         ).then(function(response){
         modal_esame.getNote();
         });
 
         // pulisce il campo dopo aver aggiunto una nota
-        $("#form_note input[target=nota]").val("");
+        $("#form_note textarea").val("");
+        $("#form_note input[target = descrizione]").val("");
       
       },
 
@@ -223,7 +226,7 @@ var modal_esame = new Vue({
      
       },
       rimuovi_arg: function(event){
-        var nome_arg=event.target.parentElement.children[0].innerText;
+        var nome_arg=event.target.parentElement.children[1].innerText;
         
 
         axios.post("invia_dati_esame.php",
@@ -249,17 +252,33 @@ var modal_esame = new Vue({
         });     
       },
       rimuovi_nota: function(event){
-        var nota=event.target.parentElement.children[0].innerText;
-        
+
+
+        var descrizione = event.target.parentElement.children[0].innerText;
+        alert(descrizione);
 
         axios.post("invia_dati_esame.php",
         'remove_nota=true'+
-        '&nota='+nota+
+        '&descrizione='+descrizione+
         '&esame='+this.nome_esame
         ).then(function(response){
           
           modal_esame.getNote();
         });       
+      },
+
+      mostra_contenuto: function(event){
+          var btn = event.target;
+          $(btn).siblings(".contenuto-nota").show();
+          $(btn).siblings(".fa-arrow-up").show();
+          $(btn).hide();
+      },
+
+      nascondi_contenuto: function(event){
+          var btn = event.target;
+          $(btn).siblings(".contenuto-nota").hide();
+          $(btn).siblings(".fa-arrow-down").show();
+          $(btn).hide();
       }
 
   }

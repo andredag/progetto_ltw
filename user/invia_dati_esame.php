@@ -65,13 +65,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     else if(isset($_POST["add_nota"]) && ($_POST["add_nota"]==true)){
         $nota=$_POST["nota"];
+        $descrizione = $_POST["descrizione"];
         $esame=$_POST["esame"];
         $id=$_SESSION["id"];
-        $query="INSERT INTO nota(descrizione,nome_esame,id_utente) VALUES($1,$2,$3)";
+        $query="INSERT INTO nota(descrizione,contenuto,nome_esame,id_utente) VALUES($1,$2,$3,$4)";
         if($stmt = pg_prepare($link,"pss", $query)){
            
             // Attempt to execute the prepared statement
-            if($result=pg_execute($link,"pss",array($nota,$esame,$id))){
+            if($result=pg_execute($link,"pss",array($descrizione,$nota,$esame,$id))){
                 $response="ok";
                 echo json_encode($response);
             }
@@ -138,14 +139,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     else if(isset($_POST["remove_nota"]) && ($_POST["remove_nota"]==true)){
-        $nota=$_POST["nota"];
+        $descrizione=$_POST["descrizione"];
         $esame=$_POST["esame"];
         $id=$_SESSION["id"];
         $query="DELETE FROM nota WHERE descrizione=$1 AND nome_esame=$2 AND id_utente=$3";
         if($stmt = pg_prepare($link,"pss", $query)){
            
             // Attempt to execute the prepared statement
-            if($result=pg_execute($link,"pss",array($nota,$esame,$id))){
+            if($result=pg_execute($link,"pss",array($descrizione,$esame,$id))){
                 $response="ok";
                 echo json_encode($response);
             }

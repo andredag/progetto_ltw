@@ -17,4 +17,5 @@ window.addEventListener('scroll', function(){
 })
     
 
+var listToModify = document.querySelector("#lista_arg");
     

@@ -272,9 +272,9 @@ nav.scroll_animation {
 
 .riga_arg {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
 }
+
 .riga_link {
   display: flex;
 
@@ -286,4 +286,30 @@ nav.scroll_animation {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.box-title {
+  background-color: #d1f436;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+#circle-ottimo {
+  color: green;
+}
+
+#circle-daRivedere {
+  color: red;
+}
+
+#circle-meh {
+  color: orange;
+}
+
+/*#lista_arg {
+  list-style: none;
+}*/
+
+.contenuto-nota {
+  display: none;
 }

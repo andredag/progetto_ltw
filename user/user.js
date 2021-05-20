@@ -234,7 +234,8 @@ $(document).ready(function(){
     //esce dalla parte per aggiungere una nota, pulendo i campi
     $("#exit-nota").click(function(){
         $("#form_note").hide();
-        $("#form_note input").val('');
+        $("#form_note textarea").val('');
+        $("#form_note input[target=descrizione]").val('');
         $("#btn-nota").show();
     });
     
@@ -245,5 +246,9 @@ $(document).ready(function(){
         $("#exit-link").click();
         $("#exit-arg").click();
     });
-        
+
+    $(".n").hide();
+
+
+   
 });
