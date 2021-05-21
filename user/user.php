@@ -197,8 +197,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <h1 class="box-title">PROGRAMMA</h1>
             <i class="fas fa-plus-square" id="btn-arg" ></i>
 
-            <button id="ordina_arg">Ordina argomenti</button>
-
             <div class="form_prog" id="form_prog">
                 
                 <input type="text" name="nome_argomento" placeholder="Nome Argomento" target="nome_arg">
@@ -271,11 +269,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <ul id="lista_note">
                 <li v-for="nota in note">
                     <div class="riga_nota">
-                    <h2>{{nota.descrizione}}</h2>
-                    <i class="fas fa-arrow-down" v-on:click="mostra_contenuto"></i>
-                    <i class="fas fa-arrow-up n"  v-on:click="nascondi_contenuto"></i>
-                    <h2 class="contenuto-nota">{{nota.contenuto}}</h2>
-                    <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
+                        <div class="header_nota">
+                            <i class="fas fa-arrow-down" v-on:click="mostra_contenuto"></i>
+                            <i class="fas fa-arrow-up nascondi_contenuto" style="display:none" v-on:click="nascondi_contenuto"></i>
+
+                            <h2>{{nota.descrizione}}</h2>
+                          
+                            <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
+                        </div>
+                        <!---<h2 class="contenuto-nota">{{nota.contenuto}}</h2>-->
+                        <textarea name="contenuto-nota" class="contenuto-nota" cols="30" rows="10">{{nota.contenuto}}</textarea>
                     </div>
                 </li>
             </ul>

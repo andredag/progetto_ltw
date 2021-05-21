@@ -247,7 +247,6 @@ $(document).ready(function(){
         $("#exit-arg").click();
     });
 
-    $(".n").hide();
 
 
    

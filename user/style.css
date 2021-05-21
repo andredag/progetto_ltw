@@ -250,7 +250,6 @@ nav.scroll_animation {
 #form_link,
 #form_note {
   display: inline-block;
-  align-items: center;
 }
 
 .modal-box {
@@ -286,6 +285,14 @@ nav.scroll_animation {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
+}
+
+.header_nota {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
 .box-title {

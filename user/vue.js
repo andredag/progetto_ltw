@@ -254,8 +254,8 @@ var modal_esame = new Vue({
       rimuovi_nota: function(event){
 
 
-        var descrizione = event.target.parentElement.children[0].innerText;
-        alert(descrizione);
+        var descrizione = event.target.parentElement.children[2].innerText;
+        
 
         axios.post("invia_dati_esame.php",
         'remove_nota=true'+
@@ -269,14 +269,16 @@ var modal_esame = new Vue({
 
       mostra_contenuto: function(event){
           var btn = event.target;
-          $(btn).siblings(".contenuto-nota").show();
+          var div = event.target.parentElement;
+          $(div).siblings(".contenuto-nota").show();
           $(btn).siblings(".fa-arrow-up").show();
           $(btn).hide();
       },
 
       nascondi_contenuto: function(event){
           var btn = event.target;
-          $(btn).siblings(".contenuto-nota").hide();
+          var div = event.target.parentElement;
+          $(div).siblings(".contenuto-nota").hide();
           $(btn).siblings(".fa-arrow-down").show();
           $(btn).hide();
       }
