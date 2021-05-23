@@ -63,8 +63,8 @@ var tab_esame = new Vue({
     //funzione per aggiornare media a/p e cfu
     scrivi_numeri: function (){  
       $.ajax({
-          url: "./getMediaA.php",
-          data: "solo_media",
+          url: "./getStats.php",
+          data: "solo_mediaA",
           success: function(msg){
               $("#title-media-a").text(msg);
           },
@@ -75,8 +75,8 @@ var tab_esame = new Vue({
       });
   
       $.ajax({
-          url: "./getMediaP.php",
-          data: "solo_media",
+          url: "./getStats.php",
+          data: "solo_mediaP",
           success: function(msg){
               $("#title-media-p").text(msg);
           },
@@ -88,7 +88,7 @@ var tab_esame = new Vue({
   
   
       $.ajax({
-          url: "./getVoti.php",
+          url: "./getStats.php",
           data: "solo_num_esami",
           success: function(msg){
               $("#title-esami").text(msg);
@@ -101,7 +101,7 @@ var tab_esame = new Vue({
   
       
       $.ajax({
-          url: "./getCfu.php",
+          url: "./getStats.php",
           data: "solo_num_cfu",
           success: function(msg){
               $("#title-cfu").text(msg);

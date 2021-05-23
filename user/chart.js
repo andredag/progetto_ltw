@@ -9,7 +9,7 @@ google.charts.setOnLoadCallback(drawChart4);
   
 function drawChart() {
   var jsonData = $.ajax({
-      url: "getVoti.php",
+      url: "getStats.php?voti_esami=true",
       dataType: "json",
       async: false
       }).responseText;
@@ -30,7 +30,7 @@ function drawChart() {
 
 function drawChart2() {
   var jsonData = $.ajax({
-      url: "getCfu.php",
+      url: "getStats.php?cfu=true",
       dataType: "json",
       async: false
       }).responseText;
@@ -50,7 +50,7 @@ function drawChart2() {
 
 function drawChart3() {
   var jsonData = $.ajax({
-      url: "getMediaA.php",
+      url: "getStats.php?media=true",
       dataType: "json",
       async: false
       }).responseText;
@@ -70,7 +70,7 @@ function drawChart3() {
 
 function drawChart4() {
   var jsonData = $.ajax({
-      url: "getMediaP.php",
+      url: "getStats.php?pesata=true",
       dataType: "json",
       async: false
       }).responseText;

@@ -49,7 +49,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           <div class="nav-links" id="nav-links">
               <i class="far fa-times-circle" id="exit-icon" onclick="hideMenu()"></i> <!--exit-icon for smaller screens-->
               <ul>
-                  <li><a href="#stats">Statistiche</a></li>
+                  <li><a href="#">Statistiche</a></li>
                   <li><a href="#esami">Esami</a></li>
               </ul>
           </div>

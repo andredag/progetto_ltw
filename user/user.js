@@ -141,8 +141,8 @@ $(document).ready(function(){
     //funzione per aggiornare media a/p cfu e num esame nella sezione statistiche
     function scrivi_numeri(){  
     $.ajax({
-        url: "./getMediaA.php",
-        data: "solo_media",
+        url: "./getStats.php",
+        data: "solo_mediaA",
         success: function(msg){
             $("#title-media-a").text(msg);
         },
@@ -153,8 +153,8 @@ $(document).ready(function(){
     });
 
     $.ajax({
-        url: "./getMediaP.php",
-        data: "solo_media",
+        url: "./getStats.php",
+        data: "solo_mediaP",
         success: function(msg){
             $("#title-media-p").text(msg);
         },
@@ -166,7 +166,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-        url: "./getVoti.php",
+        url: "./getStats.php",
         data: "solo_num_esami",
         success: function(msg){
             $("#title-esami").text(msg);
@@ -179,7 +179,7 @@ $(document).ready(function(){
 
     
     $.ajax({
-        url: "./getCfu.php",
+        url: "./getStats.php",
         data: "solo_num_cfu",
         success: function(msg){
             $("#title-cfu").text(msg);
