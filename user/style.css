@@ -232,6 +232,7 @@ nav.scroll_animation {
   font-size: 5em;
 }
 
+/*aggiungi esame box */
 #aggiungi_box {
   display: flex;
   align-items: center;
@@ -246,12 +247,26 @@ nav.scroll_animation {
   font-size: 2em;
 }
 
+/* form aggiunta argomento/link/nota*/
+
 #form_prog,
-#form_link,
-#form_note {
+#form_link {
   display: inline-block;
 }
 
+#form_note {
+  align-items: center;
+  display: flex;
+}
+
+#form_note div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*tutti e tre i box*/
 .modal-box {
   display: flex;
   justify-content: space-around;
@@ -269,36 +284,24 @@ nav.scroll_animation {
   width: 80%;
 }
 
-.riga_arg {
-  display: flex;
-  justify-content: space-between;
-}
-
-.riga_link {
-  display: flex;
-
-  justify-content: space-around;
-  align-items: center;
-}
-
-.riga_nota {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-}
-
-.header_nota {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
-
 .box-title {
   background-color: #d1f436;
   border: 2px solid;
   border-radius: 5px;
+}
+
+/*box programma*/
+
+#lista_arg li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.col-edit-arg {
+  display: flex;
+  justify-content: space-around;
 }
 
 #circle-ottimo {
@@ -316,6 +319,27 @@ nav.scroll_animation {
 /*#lista_arg {
   list-style: none;
 }*/
+
+/*box link*/
+
+#lista_link li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*box note*/
+#lista_note {
+  list-style: none;
+}
+
+#lista_note li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
 
 .contenuto-nota {
   display: none;

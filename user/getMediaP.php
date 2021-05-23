@@ -25,9 +25,16 @@
           $tot_p = $tot_p + ((int) $line['voto'])*((int) $line['cfu']);
           $num_cfu = $num_cfu + (int) $line['cfu'];
         }
-
-        $media_p = (float)$tot_p/$num_cfu;
-        echo number_format($media_p,2);
+        if ($num_cfu == 0){
+          $media_p = 0;
+          echo $media_p;
+        }
+        else{
+          $media_p = (float)$tot_p/$num_cfu;
+          echo number_format($media_p,2);
+        }
+        
+       
       }
     
 

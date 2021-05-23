@@ -21,7 +21,13 @@ if (isset($_GET["solo_num_cfu"])){
       
         $line = pg_fetch_assoc($result);
         $num_cfu=  $line['numero_cfu'];
-        echo $num_cfu;
+        if ($num_cfu == ""){
+          echo '0';
+        }
+
+        else{
+          echo $num_cfu;
+        }
         
       }
   

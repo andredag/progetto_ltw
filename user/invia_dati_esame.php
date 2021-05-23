@@ -157,6 +157,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }
 
+    else if(isset($_POST["edit_arg"]) && ($_POST["edit_arg"]==true)){
+
+        $argomento=$_POST["argomento"];
+        $esame=$_POST["esame"];
+        $id=$_SESSION["id"];
+        $pallino = $_POST["pallino"];
+        $query="UPDATE  argomento SET pallino =$1 WHERE nome_argomento = $2 AND nome_esame = $3 AND id_utente = $4";
+        if($stmt = pg_prepare($link,"pss", $query)){
+           
+            // Attempt to execute the prepared statement
+            if($result=pg_execute($link,"pss",array($pallino,$argomento,$esame,$id))){
+                $response="ok";
+                echo json_encode($response);
+            }
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+    }
+
 
     else echo("non eseguo nessuna query");
 }

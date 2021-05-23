@@ -21,7 +21,13 @@
           
             $line = pg_fetch_assoc($result);
             $media=  (float)$line['media'];
-            echo number_format($media,2);
+            if ($media == 0){
+              echo $media;
+            }
+            else{
+              echo number_format($media,2);
+            }
+           
             
           }
       

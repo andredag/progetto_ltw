@@ -226,8 +226,9 @@ var modal_esame = new Vue({
      
       },
       rimuovi_arg: function(event){
-        var nome_arg=event.target.parentElement.children[1].innerText;
-        
+        var colonna = event.target.parentElement;
+        var nome_arg = $(colonna).siblings(".col-nome-arg").children(".nome_argomento").text();
+        //alert(nome_arg);
 
         axios.post("invia_dati_esame.php",
         'remove_arg=true'+
@@ -239,9 +240,11 @@ var modal_esame = new Vue({
         });        
       },
       rimuovi_link: function(event){
-        var link=event.target.parentElement.children[0].innerText;
-        
+      
+        var div =event.target.parentElement;
+        var link = $(div).siblings(".col-link").children().children().text();
         //alert(link);
+      
         axios.post("invia_dati_esame.php",
         'remove_link=true'+
         '&link='+link+
@@ -253,10 +256,10 @@ var modal_esame = new Vue({
       },
       rimuovi_nota: function(event){
 
-
-        var descrizione = event.target.parentElement.children[2].innerText;
+        var btn = event.target;
+        var descrizione = $(btn).parent().siblings(".col-nota").children(".descrizione-nota").text();
+        //alert(descrizione);
         
-
         axios.post("invia_dati_esame.php",
         'remove_nota=true'+
         '&descrizione='+descrizione+
@@ -267,10 +270,11 @@ var modal_esame = new Vue({
         });       
       },
 
+      /*area contenuto nota*/ 
       mostra_contenuto: function(event){
           var btn = event.target;
           var div = event.target.parentElement;
-          $(div).siblings(".contenuto-nota").show();
+          $(div).siblings(".col-nota").children(".contenuto-nota").show();
           $(btn).siblings(".fa-arrow-up").show();
           $(btn).hide();
       },
@@ -278,9 +282,47 @@ var modal_esame = new Vue({
       nascondi_contenuto: function(event){
           var btn = event.target;
           var div = event.target.parentElement;
-          $(div).siblings(".contenuto-nota").hide();
+          $(div).siblings(".col-nota").children(".contenuto-nota").hide();
           $(btn).siblings(".fa-arrow-down").show();
           $(btn).hide();
+      },
+ 
+      /*edit pallino argomento*/
+      open_edit_arg: function(event){
+        var btn = event.target;
+        $(btn).siblings(".new_pallino").show();
+        $(btn).hide();
+        $(btn).siblings(".edit_arg").show();
+        $(btn).siblings(".chiudi_edit_arg").show();
+      },
+
+      chiudi_edit_arg: function(event){
+        var btn = event.target;
+        $(btn).siblings(".new_pallino").hide();
+        $(btn).siblings(".new_pallino").val("");
+        $(btn).hide();
+        $(btn).siblings(".edit_arg").hide();
+        $(btn).siblings(".open_edit_arg").show();
+        
+      },
+
+      edit_arg: function(event){
+
+        var btn = event.target;
+        var arg = $(btn).parent().siblings(".col-nome-arg").children(".nome_argomento").text();
+        var pallino = $(btn).siblings(".new_pallino").val();
+
+        //alert(arg+pallino);
+
+        axios.post("invia_dati_esame.php",
+          'edit_arg=true'+
+          '&argomento='+arg+
+          '&pallino='+pallino+
+          '&esame='+this.nome_esame
+          ).then(function(response){
+            //funziona solo per gli argomenti aggiunti in sessione!
+            modal_esame.getArg();
+        });
       }
 
   }

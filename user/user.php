@@ -165,6 +165,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     
     </div>
 </div>
+
+
 <!-- Modal esame HTML -->
 <div class="modal fade" id="modal-esame" tabindex="-1" role="dialog" aria-labelledby="modal-esame-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -214,16 +216,38 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <ol id="lista_arg">
                 
                 <li v-for="arg in argomenti">
-                <div class="riga_arg">
+                
+                    <div class="col col-4 col-edit-arg">
 
-                    <h3 v-if="arg.pallino=='Ottimo'"> <i class="fas fa-circle" id="circle-ottimo"></i></h3>
-                    <h3 v-else-if="arg.pallino=='Meh'"><i class="fas fa-circle" id="circle-meh"></i></h3>
-                    <h3 v-if="arg.pallino=='Da Rivedere'"> <i class="fas fa-circle" id="circle-daRivedere"></i></h3>
-                    
-                    <h3>{{arg.nome_argomento}}</h3>
+                        <h3 v-if="arg.pallino=='Ottimo'"> <i class="fas fa-circle" id="circle-ottimo"></i></h3>
+                        <h3 v-else-if="arg.pallino=='Meh'"><i class="fas fa-circle" id="circle-meh"></i></h3>
+                        <h3 v-if="arg.pallino=='Da Rivedere'"> <i class="fas fa-circle" id="circle-daRivedere"></i></h3>
+                        
+                        <i class='fas fa-edit open_edit_arg' v-on:click="open_edit_arg"></i>
+
+                        <i class='fas fa-times-circle chiudi_edit_arg' v-on:click="chiudi_edit_arg" style="display:none"></i>
+
+                        <i class='fas fa-check-circle edit_arg' v-on:click="edit_arg" style="display:none"></i>
+                        
+                        <select class="new_pallino" name="new_pallino" style="display:none">
+                            <option></option>
+                            <option>Ottimo</option>
+                            <option>Meh </option>
+                            <option>Da Rivedere</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col col-nome-arg">
+                        <h3 class= "nome_argomento">{{arg.nome_argomento}}</h3>
+                    </div>
+
+                    <div class="col col-1 col-rimuovi-arg">
+                        <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
+                    </div>
+
                    
-                    <i v-on:click="rimuovi_arg" class='fas fa-trash-alt'></i>
-                </div>
+                   
                 </li>
             </ol>
         </div>
@@ -242,14 +266,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <i class="far fa-check-circle" v-on:click="aggiungi_link"></i>
                 <i class="fas fa-times-circle" id="exit-link"></i>
             </div>
+
             <ul id="lista_link">
                 <li v-for="link in links">
-                    <div class="riga_link">
-                        <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
-                            <h2>{{link.descrizione_link}}</h2>
-                        </a>
-                        <i v-on:click="rimuovi_link" class='fas fa-trash-alt'></i>
-                    </div>
+                    
+                        <div class="col col-link">
+                            <a v-bind:href='link.url' target="_blank" rel="noopener noreferrer">
+                                <h2>{{link.descrizione_link}}</h2>
+                            </a>
+                        </div>
+                       <div class= "col col-1">
+                            <i class="fas fa-trash-alt" v-on:click="rimuovi_link" ></i>
+                       </div>
+                       
+                    
                 </li>
             </ul>
         </div>
@@ -261,30 +291,36 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <i class="fas fa-plus-square" id="btn-nota" ></i>
             <div class="form_prog" id="form_note">
                 <!--<input type="text" name="descrizione" placeholder="Descrizione" target="nota">-->
-                <input type="text" name="descrizione" placeholder="descrizione" target="descrizione">
-                <textarea name="contenuto" placeholder="Contenuto" target="nota" cols="40" rows="5"></textarea>
+                <div>
+                    <input type="text" name="descrizione" placeholder="descrizione" target="descrizione">
+                    <textarea name="contenuto" placeholder="Contenuto" target="nota" cols="40" rows="5"></textarea>
+                </div>
+               
                 <i class="far fa-check-circle" v-on:click="aggiungi_nota"></i>
                 <i class="fas fa-times-circle" id="exit-nota"></i>
             </div>
+
             <ul id="lista_note">
                 <li v-for="nota in note">
-                    <div class="riga_nota">
-                        <div class="header_nota">
+                    
+                        <div class="col col-2">
                             <i class="fas fa-arrow-down" v-on:click="mostra_contenuto"></i>
                             <i class="fas fa-arrow-up nascondi_contenuto" style="display:none" v-on:click="nascondi_contenuto"></i>
-
-                            <h2>{{nota.descrizione}}</h2>
-                          
-                            <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
                         </div>
-                        <!---<h2 class="contenuto-nota">{{nota.contenuto}}</h2>-->
-                        <textarea name="contenuto-nota" class="contenuto-nota" cols="30" rows="10">{{nota.contenuto}}</textarea>
-                    </div>
+
+                        <div class="col col-nota">
+                            <h2 class = "descrizione-nota">{{nota.descrizione}}</h2>
+                            <textarea name="contenuto-nota" class="contenuto-nota" cols="30" rows="10">{{nota.contenuto}}</textarea>
+                        </div>
+
+                        <div class="col col-1">
+                            <i v-on:click="rimuovi_nota" class='fas fa-trash-alt'></i>
+                        </div> 
+                    
                 </li>
             </ul>
         </div>
        
-        
         
       </div>
       <div class="modal-footer">
