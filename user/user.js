@@ -241,7 +241,7 @@ $(document).ready(function(){
     
     // quando si chiude il modal esame vengono nascoste tutte le form
     // e vengono puliti tutti i campi
-    $("#exit_modal_esame").click(function(){
+    $(".exit_modal_esame").click(function(){
         $("#exit-nota").click();
         $("#exit-link").click();
         $("#exit-arg").click();

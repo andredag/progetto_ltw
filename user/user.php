@@ -174,7 +174,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
       <div class="modal-header">
         <h5 class="modal-title" id="modal-esame-title">INFO ESAME</h5>
-        <button type="button" class="close close_modal" id="exit_modal_esame" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close close_modal exit_modal_esame" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -205,7 +205,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <select name="pallino" target="pallino" >
                     <option></option>
                     <option>Ottimo</option>
-                    <option>Meh </option>
+                    <option>Discreto</option>
                     <option>Da Rivedere</option>
                 </select>
                 <h1 id="errore_argomento" hidden="true">{{errore}}</h1>
@@ -220,7 +220,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <div class="col col-4 col-edit-arg">
 
                         <h3 v-if="arg.pallino=='Ottimo'"> <i class="fas fa-circle" id="circle-ottimo"></i></h3>
-                        <h3 v-else-if="arg.pallino=='Meh'"><i class="fas fa-circle" id="circle-meh"></i></h3>
+                        <h3 v-else-if="arg.pallino=='Discreto'"><i class="fas fa-circle" id="circle-discreto"></i></h3>
                         <h3 v-if="arg.pallino=='Da Rivedere'"> <i class="fas fa-circle" id="circle-daRivedere"></i></h3>
                         
                         <i class='fas fa-edit open_edit_arg' v-on:click="open_edit_arg"></i>
@@ -232,7 +232,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <select class="new_pallino" name="new_pallino" style="display:none">
                             <option></option>
                             <option>Ottimo</option>
-                            <option>Meh </option>
+                            <option>Discreto</option>
                             <option>Da Rivedere</option>
                         </select>
 
@@ -324,7 +324,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close_modal close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary close_modal close exit_modal_esame" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

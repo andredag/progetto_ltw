@@ -193,13 +193,11 @@ nav.scroll_animation {
 }
 
 .about h1 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 600;
 }
 
-#intro_hint {
-  font-size: 30px;
-}
+
 
 .about p {
   color: #777;
@@ -207,6 +205,9 @@ nav.scroll_animation {
   font-weight: 300;
   line-height: 22px;
   padding: 10px;
+}
+.about .intro_hint {
+  font-size: 36px;
 }
 
 .riga_hint {
@@ -232,6 +233,25 @@ nav.scroll_animation {
 
 .hint:hover {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+.graf_hint {
+  width: 70%;
+  position: relative;
+  margin-left: 10%;
+  background: #fff3f3;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  padding: 20px 12px;
+  transition: 0.5s;
+}
+
+.graf_hint:hover {
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+} 
+.graf_hint h3 {
+  text-align: center;
+  font-weight: 600;
+  margin: 10px;
 }
 
 /* for smaller screen*/
