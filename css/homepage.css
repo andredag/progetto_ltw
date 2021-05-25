@@ -4,6 +4,8 @@
   font-family: "font-family: 'Orelega One', cursive";
 }
 
+
+
 /*home section*/
 
 .home {
@@ -13,7 +15,7 @@
       rgba(4, 9, 30, 0.534),
       rgba(4, 9, 30, 0.534)
     ),
-    url("./images/home_background.jpg");
+    url("../images/home_background.jpg");
   background-position: center;
   background-size: cover;
   position: relative;
@@ -195,6 +197,8 @@ nav.scroll_animation {
   font-weight: 600;
 }
 
+
+
 .about p {
   color: #777;
   font-size: 20px;
@@ -243,7 +247,7 @@ nav.scroll_animation {
 
 .graf_hint:hover {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-}
+} 
 .graf_hint h3 {
   text-align: center;
   font-weight: 600;
@@ -251,7 +255,7 @@ nav.scroll_animation {
 }
 
 /* for smaller screen*/
-@media (max-width: 1400px) {
+@media (max-width: 900px) {
   .riga_hint {
     flex-direction: column;
   }
@@ -261,7 +265,7 @@ nav.scroll_animation {
 
 .contact {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("./images/contact_background.jpg");
+    url("../images/contact_background.jpg");
   background-size: cover;
   border: 1px solid #ccc;
   margin: 50px 0;

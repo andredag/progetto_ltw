@@ -16,23 +16,23 @@ if(isset($_SESSION["remember"])){
 // includo il file per configurare la connessione al db postgres 
 require_once "../config/config.php";
  
-// Define variables and initialize with empty values
+// definisci variabili e inizializzazione
 $username = $password = "";
-$username_err = $password_err = $login_err = "";
+
  
-// Processing form data when form is submitted
+// Se il metodo è post processa i dati
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        header("location: ./index.html");
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        header("location: ./index.html");
     } else{
         $password = trim($_POST["password"]);
     }
@@ -60,6 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["id"] = $id;
                         $_SESSION["username"] = $username; 
                         
+                        //se la checkbox di remember è settata a true
+                        //setta i cookie per un'ora
                         if(!empty($_POST["remember"]) ){
                             setcookie ("username", $username ,time()+ 3600);
                             setcookie ("password", $password ,time()+ 3600);
@@ -73,12 +75,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         header("location: ../user/user.php");
                     } else{
                         // Password is not valid, display a generic error message
-                        $login_err = "Invalid username or password.";
+                        header("location: ./index.html");
                     }
                     
                 } else{
                     // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+                    
                     header("location: ../login_registrazione/index.html");
                 }
             } else{

@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  min-height: 120vh;
+  width: 100%;
+  background-color: aquamarine;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*navbar*/
+nav {
+  top: 0%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 2px 2opx rgba(255, 151, 103, 0.164);
+  z-index: 20;
+}
+
+nav.scroll_animation {
+  background-color: white;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo img {
+  width: 150px;
+}
+
+.logo h1 {
+  color: black;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+}
+
+.nav-links ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav-links ul li a {
+  color: black;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.nav-links ul li::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #d1f436;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+  width: 100%;
+}
+
+.cool-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 34px;
+  margin-top: 20px;
+  font-size: 2em;
+  letter-spacing: 2px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.cool-btn:hover {
+  border: 1px solid #e1f436;
+  background: #e1f436;
+  transition: 1s;
+}
+
+/*exit and menu icons not displayed in big screen mode*/
+#exit-icon,
+#bar-icon {
+  display: none;
+  color: black;
+}
+
+/*for smaller screen*/
+
+/*TO-DO : specificare più intervalli di ampiezza 768px 992px 1200px 1400px*/
+@media (max-width: 1000px) {
+  .cool-btn,
+  .bottoni .cool-btn {
+    font-size: 1em;
+  }
+
+  .nav-links {
+    padding: 10px;
+    display: block;
+    position: fixed;
+    background: white;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px; /*to hide the bar menu*/
+    text-align: left;
+    z-index: 2;
+    transition: 0.5s;
+  }
+
+  .nav-links ul {
+    padding: 30px;
+  }
+
+  #exit-icon,
+  #bar-icon {
+    display: block;
+    color: black;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+
+/*statistiche
+*/
+.stats {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  right: 10%;
+}
+
+.container-fluid .row {
+  border: 3px solid black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.col h3 {
+  position: relative;
+  top: 50%;
+}
+.chart-box {
+  /*transition: transform 0.2s;*/
+  width: fit-content;
+  position: relative;
+  top: 0%;
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+}
+
+/*.chart-box:hover {
+  transform: scale(1.5);
+}*/
+
+/* esami */
+
+.esami {
+  margin-top: 10px;
+  min-height: 80vh;
+  width: 100%;
+  background: white;
+  position: relative;
+}
+
+.close {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.fa-times-circle,
+.fa-circle {
+  color: red;
+}
+
+.info-body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  align-items: center;
+}
+
+#ok-btn {
+  margin-top: 10px;
+
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid black;
+}
+
+.alert {
+  display: none;
+  text-align: center;
+}
+
+.table .fa-plus-square {
+  font-size: 5em;
+}
+
+/*aggiungi esame box */
+#aggiungi_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+}
+
+/*modal-esame*/
+
+#modal-esame .fa-plus-square {
+  font-size: 2em;
+}
+
+/* form aggiunta argomento/link/nota*/
+
+#form_prog,
+#form_link {
+  display: inline-block;
+}
+
+#form_note {
+  align-items: center;
+  display: flex;
+}
+
+#form_note div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*tutti e tre i box*/
+.modal-box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+#lista_arg,
+#lista_note,
+#lista_link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 5%;
+  width: 80%;
+}
+
+.box-title {
+  background-color: #d1f436;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+/*box programma*/
+
+#lista_arg li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.col-edit-arg {
+  display: flex;
+  justify-content: space-around;
+}
+
+#circle-ottimo {
+  color: green;
+}
+
+#circle-daRivedere {
+  color: red;
+}
+
+#circle-discreto {
+  color: orange;
+}
+
+/*#lista_arg {
+  list-style: none;
+}*/
+
+/*box link*/
+
+#lista_link li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*box note*/
+#lista_note {
+  list-style: none;
+}
+
+#lista_note li {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contenuto-nota {
+  display: none;
+}

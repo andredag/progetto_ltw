@@ -1,12 +1,11 @@
 <?php
-// Include config file
+// includo il file per configurare la connessione al db postgres
 require_once "../config/config.php";
  
-// Define variables and initialize with empty values
+// definisci variabili e inizializzazione
 $username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
  
-// Processing form data when form is submitted
+// Se il metodo è post processa i dati
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
@@ -23,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($result=pg_execute($link,"ps",array($param_username))){
                 if(pg_numrows($result) == 1){ 
-                    $username_err = "This username is already taken.";
+                    header("location: ./index.html?register=true");
                 } else{
                     $username = trim($_POST["username"]);
                 }
@@ -35,20 +34,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate password
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
+        header("location: ./index.html?register=true");   
     } elseif(strlen(trim($_POST["password"])) < 3){
-        $password_err = "Password must have atleast 6 characters.";
+        header("location: ./index.html?register=true");
     } else{
         $password = trim($_POST["password"]);
     }
     
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
+        header("location: ./index.html?register=true");     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            header("location: ./index.html?register=true");
         }
     }
     
