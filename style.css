@@ -4,8 +4,6 @@
   font-family: "font-family: 'Orelega One', cursive";
 }
 
-
-
 /*home section*/
 
 .home {
@@ -197,8 +195,6 @@ nav.scroll_animation {
   font-weight: 600;
 }
 
-
-
 .about p {
   color: #777;
   font-size: 20px;
@@ -247,7 +243,7 @@ nav.scroll_animation {
 
 .graf_hint:hover {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-} 
+}
 .graf_hint h3 {
   text-align: center;
   font-weight: 600;
@@ -255,7 +251,7 @@ nav.scroll_animation {
 }
 
 /* for smaller screen*/
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .riga_hint {
     flex-direction: column;
   }

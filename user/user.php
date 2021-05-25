@@ -66,7 +66,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <div class="row">
                 <div class="col "><h3>Media Aritmetica</h3></div>
                 <div class="col "><h3 id="title-media-a"></h3></div>
-                <div class="col"><div class = "chart-box" id="media-aritmetica-box"></div></div>
+                <div class="col col-chart"><div class = "chart-box" id="media-aritmetica-box"></div></div>
             </div>
             <div class="row">
                 <div class="col "><h3>Media Pesata</h3></div>

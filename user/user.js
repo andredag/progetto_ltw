@@ -67,8 +67,8 @@ $(document).ready(function(){
             errore=true;
         }
         if(sostenuto==true && !isNaN(voto)){
-            if(voto<0 || voto>31){
-                $("#alert").append("Inserisci un numero corretto nel campo voto compreso tra 0 e 31 ");
+            if(voto<18 || voto>31){
+                $("#alert").append("Inserisci un numero corretto nel campo voto compreso tra 18 e 31 "+'</br>');
                 errore=true;
             }
         }

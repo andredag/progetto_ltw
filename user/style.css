@@ -169,7 +169,6 @@ nav.scroll_animation {
   top: 50%;
 }
 .chart-box {
-  /*transition: transform 0.2s;*/
   width: fit-content;
   position: relative;
   top: 0%;
@@ -177,10 +176,6 @@ nav.scroll_animation {
   right: 0%;
   left: 0%;
 }
-
-/*.chart-box:hover {
-  transform: scale(1.5);
-}*/
 
 /* esami */
 
