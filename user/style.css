@@ -152,13 +152,14 @@ nav.scroll_animation {
 /*statistiche
 */
 .stats {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  right: 10%;
+  position:relative;
+  width: 80%;
+  
+  
 }
 
 .container-fluid .row {
+  width: 100%;
   border: 3px solid black;
   text-align: center;
   margin-bottom: 20px;
@@ -173,8 +174,7 @@ nav.scroll_animation {
   position: relative;
   top: 0%;
   bottom: 0%;
-  right: 0%;
-  left: 0%;
+ 
 }
 
 /* esami */

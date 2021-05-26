@@ -182,6 +182,64 @@ nav.scroll_animation {
   }
 }
 
+@media (max-width: 768px) {
+  .logo img{
+    width: 100px;
+  }
+  .logo h1{
+    font-size: 20px;
+  }
+
+  .text-box h1 {
+    font-size: 30px;
+  }
+  .bottoni{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    
+  }
+  .cool-btn,
+  .bottoni .cool-btn {
+    padding: 5px;
+    text-align: center;
+    width: 90px;
+    font-size: 0.7em;
+  }
+
+  .nav-links {
+    padding: 10px;
+    display: block;
+    position: fixed;
+    background: white;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px; /*to hide the bar menu*/
+    text-align: left;
+    z-index: 2;
+    transition: 0.5s;
+  }
+
+  .nav-links ul {
+    padding: 30px;
+  }
+
+  #exit-icon,
+  #bar-icon {
+    display: block;
+    color: black;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .contact h2{
+    font-size: 20px;
+  }
+}
+
 /*about section*/
 
 .about {
@@ -255,7 +313,7 @@ nav.scroll_animation {
 }
 
 /* for smaller screen*/
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .riga_hint {
     flex-direction: column;
   }
@@ -313,3 +371,4 @@ nav.scroll_animation {
 .comment-form .cool-btn {
   color: black;
 }
+

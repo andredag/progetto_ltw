@@ -58,7 +58,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           </div>
           <i class="fas fa-bars" id="bar-icon" onclick="showMenu()"></i> <!--menu-icon for smaller screens-->
     </nav>
-
+    <br>
+    <br>
     <!-- stats -->
     <div class="stats" id= "stats">
        
