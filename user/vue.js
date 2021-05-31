@@ -1,7 +1,7 @@
 var tab_esame = new Vue({
     el: '#table_body',
     data: {
-      esami: "ciao"
+      esami: " "
       
     },
     methods: {
@@ -133,6 +133,7 @@ var modal_esame = new Vue({
     
   },
   methods: {
+      //funzione che recupera la lista degli argomenti per un dato esame
       getArg:function(){
         axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati: "argomenti"}})
         .then(function (response) {
@@ -142,6 +143,7 @@ var modal_esame = new Vue({
            console.log(error);
         });
       },
+      //funzione che recupera la lista dei links per un dato esame
       getLinks:function(){
         axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati:"link"}})
         .then(function (response) {
@@ -151,6 +153,7 @@ var modal_esame = new Vue({
            console.log(error);
         });
       },
+      //funzione che recupera la lista delle Note per un dato esame
       getNote:function(){
         axios.get('getDatiEsame.php',{params: {nome: modal_esame.nome_esame, richiesta_dati: "note"}})
         .then(function (response) {
@@ -160,6 +163,7 @@ var modal_esame = new Vue({
            console.log(error);
         });
       },
+      //funzione che aggiunge un argomento per un dato esame
       aggiungi_arg:function(){
         var arg=$("#form_prog input[target=nome_arg]").val();
         var pallino= $("#form_prog select[target=pallino]").val();
@@ -182,7 +186,7 @@ var modal_esame = new Vue({
         $("#form_prog select[target=pallino]").val("");
 
       },
-
+      //funzione che aggiunge una nota per un dato esame
       aggiungi_nota: function(){
         var nota=$("#form_note textarea").val();
         var descrizione = $("#form_note input[target = descrizione]").val();
@@ -203,7 +207,7 @@ var modal_esame = new Vue({
         $("#form_note input[target = descrizione]").val("");
       
       },
-
+      //funzione che aggiunge un link per un dato esame
       aggiungi_link: function(){
         var descrizione_link = $("#form_link input[target=descrizione_link]").val();
         var url = $("#form_link input[target=url]").val();

@@ -16,24 +16,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/toogle_menu.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="../js/bootstrap.min.js"></script>
     <title>User page</title>
 
+    <!-- Impoto fogli di stile -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Importo script vari -->
+    <script src="https://kit.fontawesome.com/d30df16bb9.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/toogle_menu.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    
     <!-- load JQuery-->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
-    
-    <!--Load the AJAX API-->
+    <!--Load the Google Chart's API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="./chart.js"></script>
 
+    <!-- Importo framework Vue.js e libreria Axios -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 
 </head>
 <body>
@@ -181,7 +183,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       </div>
 
       <div class="modal-body" id="body-modal-esame">
-
+        
+        <!-- sezione info esame -->
         <div class= "modal-box" id="info-box">
             <h1 class="box-title">DATI GENERALI</h1>
             <h2>Nome: {{esame.nome_esame}}</h2>
@@ -194,7 +197,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
         <hr>
 
-
+        <!-- sezione programma esame -->
         <div class="modal-box" id="programma-box">
 
             <h1 class="box-title">PROGRAMMA</h1>
@@ -256,6 +259,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         <hr>
 
+        <!-- sezione Links esame -->
         <div class="modal-box" id="link-box">
             <h1 class="box-title">LINKS</h1>
             <i class="fas fa-plus-square" id="btn-link" ></i>
@@ -287,6 +291,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
         <hr>
 
+        <!-- sezione Note esame -->
         <div class="modal-box" id="note-box">
             <h1 class="box-title">NOTE</h1>
             <i class="fas fa-plus-square" id="btn-nota" ></i>
